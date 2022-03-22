@@ -4,4 +4,9 @@
     <style name="button_ordinary">
         
     </style>
+
+    <style name="colorful_text_view">
+        <item name="android:textColor">@color/pink_dark</item>
+        <item name="android:textSize">@dimen/very_large_text</item>
+    </style>
 </resources>

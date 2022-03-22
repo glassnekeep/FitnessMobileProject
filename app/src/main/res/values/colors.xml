@@ -7,4 +7,89 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <color name="pink_light">#F48CA6</color>
+    <color name="pink">#EA3A6A</color>
+    <color name="pink_dark">#BF0B4C</color>
+    <color name="pink_gradient">#F06292</color>
+
+
+
+    <!-- Material 800 colors -->
+
+    <color name="orange_800">#EF6C00</color>
+    <color name="red_800">#C62828</color>
+    <color name="green_800">#2E7D32</color>
+    <color name="green_light_800">#558B2F</color>
+    <color name="blue_800">#1565C0</color>
+    <color name="blue_light_800">#0277BD</color>
+    <color name="blue_very_light_800">#00838F</color>
+    <color name="yellow_800">#F9A825</color>
+    <color name="orange_light_800">#FF8F00</color>
+    <color name="orange_dark_800">#F4511E</color>
+    <color name="biruze_800">#00695C</color>
+    <color name="pink_800">#AD1457</color>
+    <color name="blue_dark_800">#283593</color>
+    <color name="yellow_green_800">#9E9D24</color>
+    <color name="purple_800">#6A1B9A</color>
+
+    <!-- Material 600 colors -->
+
+    <color name="orange_600">#FB8C00</color>
+    <color name="red_600">#E53935</color>
+    <color name="green_600">#43A047</color>
+    <color name="green_light_600">#7CB342</color>
+    <color name="blue_600">#1E88E5</color>
+    <color name="blue_light_600">#039BE5</color>
+    <color name="blue_very_light_600">#00ACC1</color>
+    <color name="yellow_600">#FDD835</color>
+    <color name="orange_light_600">#FFB300</color>
+    <color name="orange_dark_600">#F4511E</color>
+    <color name="biruze_600">#00897B</color>
+    <color name="pink_600">#D81B60</color>
+    <color name="blue_dark_600">#3949AB</color>
+    <color name="yellow_green_600">#C0CA33</color>
+    <color name="purple_600">#8E24AA</color>
+
+    <!-- Material 500 colors -->
+
+    <color name="orange_500">#FF9800</color>
+    <color name="red_500">#F44336</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_light_500">#8BC34A</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_light_500">#03A9F4</color>
+    <color name="blue_very_light_500">#00BCD4</color>
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="orange_light_500">#FFC107</color>
+    <color name="orange_dark_500">#FF5722</color>
+    <color name="biruze_500">#009688</color>
+    <color name="pink_500">#E91E63</color>
+    <color name="blue_dark_500">#3F51B5</color>
+    <color name="yellow_green_500">#CDDC39</color>
+
+    <!-- Material 300 colors -->
+
+    <color name="orange_300">#FFB74D</color>
+    <color name="red_300">#E57373</color>
+    <color name="green_300">#81C784</color>
+    <color name="green_light_300">#AED581</color>
+    <color name="blue_300">#64B5F6</color>
+    <color name="blue_light_300">#4FC3F7</color>
+    <color name="blue_very_light_300">#4DD0E1</color>
+    <color name="yellow_300">#FFF176</color>
+    <color name="orange_light_300">#FFD54F</color>
+    <color name="orange_dark_300">#FF8A65</color>
+    <color name="biruze_300">#4DB6AC</color>
+    <color name="pink_300">#F06292</color>
+    <color name="blue_dark_300">#7986CB</color>
+    <color name="yellow_green_300">#DCE775</color>
+    <color name="purple_300">#BA68C8</color>
+
+    <!-- Some other colors -->
+
+    <color name="gray">#6C6969</color>
+    <color name="gray_dark">#504E4E</color>
+    <color name="gray_light">#9E9B9B</color>
+    <color name="gray_main_color">#6E6868</color>
 </resources>
