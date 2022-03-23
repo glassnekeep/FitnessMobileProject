@@ -32,15 +32,16 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hello_message"
                 style="@style/colorful_text_view"
-                android:text="Hello !"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginTop="@dimen/very_very_large_margin"
+                android:fontFamily="@font/comfortaa"
+                android:text="Hello !"
                 android:textSize="@dimen/medium_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/very_very_large_margin"
-                android:layout_marginStart="@dimen/big_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_edit_text"
@@ -88,27 +89,31 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/forgot_password_button"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:text="Forgot password?"
-                android:textColor="@color/gray"
-                app:layout_constraintStart_toStartOf="@+id/password_edit_text"
-                app:layout_constraintTop_toBottomOf="@id/password_edit_text"
-                android:layout_marginTop="@dimen/very_small_margin"
-                android:textAllCaps="false"
-                android:textSize="@dimen/very_small_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/very_small_margin"
+                android:fontFamily="@font/comfortaa_light"
+                android:text="Forgot password?"
+                android:textAllCaps="false"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/very_small_text"
+                app:layout_constraintStart_toStartOf="@+id/password_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/password_edit_text" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/forgot_password_button"
-                app:layout_constraintStart_toStartOf="@id/password_edit_text"
+                android:layout_marginHorizontal="@dimen/medium_margin"
+                android:fontFamily="@font/comfortaa"
+                android:paddingVertical="5dp"
+                android:minHeight="0dp"
+                android:text="Login"
                 android:textAllCaps="false"
                 android:textSize="@dimen/small_text"
-                android:paddingVertical="5dp"
-                android:text="Login"
-                android:layout_marginHorizontal="@dimen/medium_margin"
-                app:cornerRadius="@dimen/medium_margin" />
+                app:cornerRadius="@dimen/medium_margin"
+                app:layout_constraintStart_toStartOf="@id/password_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/forgot_password_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,6 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No account?"
+            android:fontFamily="@font/comfortaa"
             android:textSize="@dimen/small_text"
             android:layout_marginEnd="@dimen/very_small_margin"
             android:textColor="@color/white" />
@@ -144,6 +150,7 @@
             android:minWidth="0dp"
             android:textSize="@dimen/small_text"
             android:text="Sign Up"
+            android:fontFamily="@font/comfortaa"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold" />
