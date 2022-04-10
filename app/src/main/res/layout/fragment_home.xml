@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/top_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/Union" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        android:fontFamily="@font/comfortaa"
+        android:layout_margin="@dimen/large_margin"
+        android:text="Home"
+        android:textSize="@dimen/medium_text" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/flipper_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/top_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="@dimen/medium_margin"
+        android:layout_marginHorizontal="@dimen/large_margin"
+        android:layout_marginTop="96dp" >
+        <ViewFlipper
+            android:id="@+id/image_flipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/flipper_images"
+                android:background="@drawable/image3" />
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/flipper_images"
+                android:background="@drawable/image4"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/flipper_images"
+                android:background="image5"/>
+        </ViewFlipper>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/previous_program_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:focusable="true"
+        app:cardCornerRadius="@dimen/small_margin"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="@dimen/big_margin"
+        app:layout_constraintTop_toBottomOf="@id/flipper_container"
+        app:cardElevation="0.5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="#F8F6F6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/continue_program_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/image5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continue_program_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/very_small_margin"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:text="Continue program"
+                android:textColor="@color/black"
+                android:fontFamily="@font/comfortaa"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:minHeight="0dp"
+                android:textSize="@dimen/small_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/program_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/previous_program_container"
+        app:layout_constraintStart_toStartOf="@id/previous_program_container"
+        android:textSize="@dimen/small_text"
+        android:fontFamily="@font/comfortaa"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textColor="@color/black"
+        android:text="Recent programs" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/programs_recycler_view"
+        app:layout_constraintTop_toBottomOf="@id/program_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/large_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>
