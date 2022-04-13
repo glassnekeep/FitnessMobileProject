@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.LoginFragment">
+    tools:context=".views.fragments.LoginFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_container"
