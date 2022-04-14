@@ -15,10 +15,11 @@
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_splash.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/item_program.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/register_toolbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/glass/StudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
