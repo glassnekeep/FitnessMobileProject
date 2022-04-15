@@ -15,4 +15,6 @@ interface ProgramApi {
     suspend fun updateProgram(program: Program) : HttpResponse
     suspend fun deleteProgram(programId: Int) : HttpResponse
     //TODO здесь и в серверной части нужно добавить удаление пользователя из программы и программы из пользователя
+    suspend fun deleteExerciseFromProgram(exerciseId: Int, programId: Int) : HttpResponse
+    suspend fun deleteUserFromProgram(userId: Int, programId: Int) : HttpResponse
 }
