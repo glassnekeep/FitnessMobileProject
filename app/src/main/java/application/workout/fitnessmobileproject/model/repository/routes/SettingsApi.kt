@@ -4,8 +4,10 @@ import application.workout.fitnessmobileproject.model.models.Settings
 import io.ktor.client.statement.*
 
 interface SettingsApi {
-    suspend fun getSettingsWithId(id: Int) : Settings
-    suspend fun getSettingsWithUserId(userId: Int) : Settings
+//    suspend fun getSettingsWithId(id: Int) : Settings
+//    suspend fun getSettingsWithUserId(userId: Int) : Settings
+    suspend fun getSettingsWithId(id: Int) : HttpResponse
+    suspend fun getSettingsWithUserId(userId: Int) : HttpResponse
     suspend fun createSettings(settings: Settings) : HttpResponse
     suspend fun updateSettings(id: Int, settings: Settings) : HttpResponse
     suspend fun deleteSettingsWithId(id: Int) : HttpResponse

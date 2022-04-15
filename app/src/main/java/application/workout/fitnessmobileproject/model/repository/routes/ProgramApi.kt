@@ -5,10 +5,14 @@ import application.workout.fitnessmobileproject.model.models.User
 import io.ktor.client.statement.*
 
 interface ProgramApi {
-    suspend fun getProgramWithId(id: Int) : Program
-    suspend fun getProgramListWithUser(id: Int) : List<Program>
-    suspend fun getUserListWithProgram(id: Int) : List<User>
-    suspend fun getAllPrograms() : List<Program>
+//    suspend fun getProgramWithId(id: Int) : Program
+//    suspend fun getProgramListWithUser(id: Int) : List<Program>
+//    suspend fun getUserListWithProgram(id: Int) : List<User>
+//    suspend fun getAllPrograms() : List<Program>
+    suspend fun getProgramWithId(id: Int) : HttpResponse
+    suspend fun getProgramListWithUser(id: Int) : HttpResponse
+    suspend fun getUserListWithProgram(id: Int) : HttpResponse
+    suspend fun getAllPrograms() : HttpResponse
     suspend fun addUserToProgram(userId: Int, programId: Int) : HttpResponse
     suspend fun addProgramToUser(programId: Int, userId: Int) : HttpResponse
     suspend fun createProgram(program: Program) : HttpResponse
