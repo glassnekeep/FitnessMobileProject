@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/Union" />
+        android:background="@drawable/union" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
@@ -43,13 +43,13 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 style="@style/flipper_images"
-                android:background="@drawable/image3" />
+                android:src="@drawable/image3" />
             <com.google.android.material.imageview.ShapeableImageView
                 style="@style/flipper_images"
-                android:background="@drawable/image4"/>
+                android:src="@drawable/image4"/>
             <com.google.android.material.imageview.ShapeableImageView
                 style="@style/flipper_images"
-                android:background="image5"/>
+                android:src="@drawable/image5"/>
         </ViewFlipper>
     </com.google.android.material.card.MaterialCardView>
 
@@ -81,7 +81,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/image5" />
+                android:src="@drawable/image5" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/continue_program_button"

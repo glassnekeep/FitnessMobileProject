@@ -6,16 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import application.workout.fitnessmobileproject.R
-class RegisterParametersFragment : Fragment() {
+
+class HomeViewPagerFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_parameters, container, false)
+        savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_home_view_pager, container, false)
     }
 }
