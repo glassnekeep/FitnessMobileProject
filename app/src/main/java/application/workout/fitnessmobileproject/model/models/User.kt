@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 @Entity(tableName = "user_table")
 data class User(
     @PrimaryKey
+    @ColumnInfo(name = "user_id")
     val id: Int,
     val username: String,
     val firstname: String,
