@@ -1,8 +1,5 @@
 package application.workout.fitnessmobileproject.model.models
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import application.workout.fitnessmobileproject.model.dao.UserDao
 import kotlinx.serialization.Serializable
 
@@ -16,14 +13,17 @@ data class Calendar(
     val user: User
 )
 
-@Entity(tableName = "calendar_table")
+@Entity(tableName = "calendar_table", foreignKeys =
+    [ForeignKey(entity = User::class, parentColumns = ["user_id"], childColumns = ["calendar_user_id"], onDelete = ForeignKey.CASCADE),
+    ForeignKey(entity = Program::class, parentColumns = ["program_id"], childColumns = ["calendar_program_id"], onDelete = ForeignKey.CASCADE)]
+)
 data class DatabaseCalendar(
     @PrimaryKey
     val id: Int,
     val date: String,
-    @ColumnInfo(name = "program_id")
+    @ColumnInfo(name = "calendar_program_id")
     val programId: Int,
-    @ColumnInfo(name = "user_id")
+    @ColumnInfo(name = "calendar_user_id")
     val userId: Int
 ) {
     companion object {

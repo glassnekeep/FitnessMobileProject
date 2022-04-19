@@ -10,16 +10,24 @@ data class Program(
     val id: Int,
     val name: String,
     val interval: Int,
-    @Ignore
+    @Relation(associateBy = Junction(ProgramToExerciseRef::class), parentColumn = "program_id", entityColumn = "exerciseId")
     val exercise: List<Exercise>,
-    @Ignore
+    @Relation(associateBy = Junction(ProgramToUserRef::class), parentColumn = "program_id", entityColumn = "userId")
     val users: List<User>,
     val image: String
     //TODO подумать о том чтобы тут было максимальное число очков за данную программу
 )
 
-@Entity(primaryKeys = ["program_id", "user_id"])
-data class ProgramWithExercises(
-    val programId: String,
-    val userId: String
+@Entity(primaryKeys = ["program_id", "exerciseId"])
+data class ProgramToExerciseRef(
+    @ColumnInfo(name = "program_id")
+    val programId: Int,
+    val exerciseId: Int
+)
+
+@Entity(primaryKeys = ["program_id", "userId"])
+data class ProgramToUserRef(
+    @ColumnInfo(name = "program_id")
+    val programId: Int,
+    val userId: Int
 )

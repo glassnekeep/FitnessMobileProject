@@ -2,13 +2,14 @@ package application.workout.fitnessmobileproject.model.models
 import androidx.room.*
 import kotlinx.serialization.Serializable
 
-@Entity
+@Entity(tableName = "settings_table", foreignKeys =
+    [ForeignKey(entity = User::class, parentColumns = ["user_id"], childColumns = ["child_user_id"], onDelete = ForeignKey.CASCADE)])
 @Serializable
 data class Settings(
     @PrimaryKey
-    @ColumnInfo(name = "settings_user_id")
+    //@ColumnInfo(name = "settings_user_id")
     val id: Int,
-    @Embedded
+    @Embedded(prefix = "child_")
     val user: User,
     val restTime: Int,
     val countDownTime: Int
