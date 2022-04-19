@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Entity
+@Entity(tableName = "exercise_table")
 data class Exercise(
     @PrimaryKey
+    @ColumnInfo(name = "exercise_id")
     val id: Int,
     val name: String,
     val time: Int,

@@ -3,7 +3,7 @@ import androidx.room.*
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Entity
+@Entity(tableName = "program_table")
 data class Program(
     @PrimaryKey
     @ColumnInfo(name = "program_id")
