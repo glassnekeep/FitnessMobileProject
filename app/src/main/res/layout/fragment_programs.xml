@@ -1,15 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.ProgramsFragment">
+    tools:context=".views.fragments.ProgramsFragment"
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="48sp"
-        android:text="ProgramsFragment" />
+    <androidx.appcompat.widget.AppCompatImageView
+        app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:src="@drawable/header"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-50dp" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintLeft_toLeftOf="t"
+        app:layout_constraintRight_toRightOf=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/most_popular"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="132dp" />
+
+    <HorizontalScrollView
+        app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintLeft_toLeftOf="t"
+        app:layout_constraintRight_toRightOf=""
+        android:layout_width="475sp"
+        android:layout_height="180dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="183dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/exercise_for_beginners"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kesheshi"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintLeft_toLeftOf="t"
+        app:layout_constraintRight_toRightOf=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/programs"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="371dp" />
+
+    <ScrollView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf=""
+        app:layout_constraintRight_toRightOf=""
+        android:layout_width="475dp"
+        android:layout_height="400dp"
+        android:background="@color/white"
+        tools:layout_editor_absoluteX="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="386dp"
+                android:layout_height="170sp"
+                android:layout_marginLeft="35sp"
+                android:layout_marginRight="35sp"
+                android:background="@drawable/days_with_yoga" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="386dp"
+                android:layout_height="170sp"
+                android:layout_marginLeft="35sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="35sp"
+                android:background="@drawable/scretch_for_you" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

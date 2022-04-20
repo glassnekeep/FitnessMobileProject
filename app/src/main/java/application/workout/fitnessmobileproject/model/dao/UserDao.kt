@@ -6,8 +6,6 @@ import application.workout.fitnessmobileproject.model.models.User
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM user_table WHERE id = :id")
+    @Query("SELECT * FROM user_table WHERE user_id = :id")
     fun getUserWithId(id: Int) : User
-
-
 }

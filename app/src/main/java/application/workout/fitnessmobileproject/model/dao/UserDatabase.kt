@@ -8,7 +8,7 @@ import application.workout.fitnessmobileproject.model.models.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {
-    abstract fun userDao(): UserDao
+    abstract fun getUserDao(): UserDao
 
     companion object {
         @Volatile
