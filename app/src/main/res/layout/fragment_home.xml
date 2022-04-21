@@ -120,6 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="@dimen/small_margin"
+        tools:listitem="@layout/item_program"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
