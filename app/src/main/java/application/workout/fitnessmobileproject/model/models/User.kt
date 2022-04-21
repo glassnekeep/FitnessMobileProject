@@ -9,15 +9,15 @@ import kotlinx.serialization.Serializable
 data class User(
     @PrimaryKey
     @ColumnInfo(name = "user_id")
-    val id: Int,
-    val username: String,
-    val firstname: String,
-    val lastname: String,
+    val id: Int = 0,
+    val username: String = "",
+    val firstname: String = "",
+    val lastname: String = "",
     @ColumnInfo(name = "phone_number")
-    val phoneNumber: String,
-    val email: String,
-    val password: String,
-    val sex: String,
-    val growth: Int,
-    val weight: Int
+    val phoneNumber: String = "",
+    val email: String = "",
+    val password: String = "",
+    val sex: String = "",
+    val growth: Int = 0,
+    val weight: Int = 0
 )

@@ -6,7 +6,7 @@ import application.workout.fitnessmobileproject.model.models.User
 
 var USER: User? = null
 var PROGRAMS: List<Program> = emptyList()
-var username: String = ""
-var password: String = ""
+var USERNAME: String = ""
+var PASSWORD: String = ""
 
 
