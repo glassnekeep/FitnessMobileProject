@@ -4,20 +4,20 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
-@Serializable
 @Entity(tableName = "user_table")
+@Serializable
 data class User(
     @PrimaryKey
     @ColumnInfo(name = "user_id")
-    val id: Int = 0,
-    val username: String = "",
-    val firstname: String = "",
-    val lastname: String = "",
+    val id: Int,
+    val username: String,
+    val firstname: String,
+    val lastname: String,
     @ColumnInfo(name = "phone_number")
-    val phoneNumber: String = "",
-    val email: String = "",
-    val password: String = "",
-    val sex: String = "",
-    val growth: Int = 0,
-    val weight: Int = 0
+    val phoneNumber: String,
+    val email: String,
+    val password: String,
+    val sex: String,
+    val growth: Int,
+    val weight: Int
 )

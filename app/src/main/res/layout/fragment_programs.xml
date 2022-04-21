@@ -9,6 +9,8 @@
     android:orientation="vertical"
     android:background="@color/white">
 
+    <!--
+
     <androidx.appcompat.widget.AppCompatImageView
         app:layout_constraintBottom_toBottomOf=""
         app:layout_constraintLeft_toLeftOf="parent"
@@ -101,4 +103,5 @@
         </LinearLayout>
 
     </ScrollView>
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

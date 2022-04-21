@@ -13,9 +13,9 @@ import io.ktor.client.statement.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class UserRepository private constructor(application: Application) : UserApi {
+class UserRepository private constructor(application: FitnessApplication, val username: String, val password: String) : UserApi {
 
-    private val USER_ROOT = "http://10.0.2.2:8080/user"
+    private val USER_ROOT = "http://${username}:${password}@10.0.2.2:8080/user"
 
     //TODO тут нужно определить объект userDao и модели бд Room
 
@@ -27,11 +27,10 @@ class UserRepository private constructor(application: Application) : UserApi {
     }
 
     override suspend fun getUserWithId(id: Int): HttpResponse {
-        val response = client.get(USER_ROOT) {
+        return client.get(USER_ROOT) {
             parameter("id", id)
             basicAuth(username = USERNAME, password = PASSWORD)
         }
-        return response
     }
 
     override suspend fun getUserWithEmail(email: String): HttpResponse {
@@ -42,7 +41,7 @@ class UserRepository private constructor(application: Application) : UserApi {
         return withContext(Dispatchers.IO) {
             client.get(USER_ROOT) {
                 parameter("username", username)
-                basicAuth(username = USERNAME, password = PASSWORD)
+                basicAuth(username = username, password = password)
             }
         }
     }
@@ -86,7 +85,7 @@ class UserRepository private constructor(application: Application) : UserApi {
     companion object {
         private var INSTANCE: UserRepository? = null
         fun getInstance(application: Application): UserRepository = INSTANCE ?: kotlin.run {
-            INSTANCE = UserRepository(application = application)
+            INSTANCE = UserRepository(application = application as FitnessApplication, application.getUsername() ?: "", application.getPassword() ?: "")
             INSTANCE!!
         }
     }

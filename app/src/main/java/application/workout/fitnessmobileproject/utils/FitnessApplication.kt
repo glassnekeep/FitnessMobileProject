@@ -1,16 +1,40 @@
 package application.workout.fitnessmobileproject.utils
 
 import android.app.Application
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
+import android.util.Log
 import application.workout.fitnessmobileproject.model.models.*
+import application.workout.fitnessmobileproject.model.repository.UserRepository
+import io.ktor.client.call.*
+import kotlinx.coroutines.*
 
 class FitnessApplication: Application() {
 
+    private val USERNAME = "username"
+    private val PASSWORD = "password"
+
+    fun setCredentials(username: String, password: String) {
+        val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
+        preferences.edit().let {
+            it.putString(USERNAME, username)
+            it.putString(PASSWORD, password)
+            it.apply()
+        }
+    }
+    fun getUsername(): String? {
+        val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
+        return preferences.getString(USERNAME, "")
+    }
+    fun getPassword(): String? {
+        val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
+        return preferences.getString(PASSWORD, "")
+    }
+    suspend fun validateUser() {
+        setCredentials("test", "password")
+        val username = getUsername()
+        USER = UserRepository.getInstance(this@FitnessApplication).getUserWithUsername(username!!).body()
+        println(USER)
+        Log.d("user", user.toString())
+    }
     companion object {
         var user: User? = null
         var programs: List<Program> = emptyList()

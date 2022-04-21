@@ -6,13 +6,14 @@ import androidx.lifecycle.*
 import application.workout.fitnessmobileproject.model.models.User
 import application.workout.fitnessmobileproject.model.repository.UserRepository
 import application.workout.fitnessmobileproject.utils.LoadingState
-import application.workout.fitnessmobileproject.utils.username
+import application.workout.fitnessmobileproject.utils.USER
+import application.workout.fitnessmobileproject.utils.USERNAME
 import io.ktor.client.call.*
 import kotlinx.coroutines.launch
 
 class SharedSplashViewModel(application: Application): AndroidViewModel(application) {
-    private var _user = //MutableLiveData<User>()
-        liveData<User> {
+    private var _user = MutableLiveData<User>()
+        /*liveData<User> {
             val user = UserRepository.getInstance(application).getUserWithUsername(username)
             when(user.status.value) {
                 in 200..299 -> {
@@ -20,14 +21,17 @@ class SharedSplashViewModel(application: Application): AndroidViewModel(applicat
                 }
                 in 400..499 -> {
                     Toast.makeText(application, "Client failed to get user", Toast.LENGTH_SHORT).show()
-                    emit(User())
+                    emit(User(0, "", "", "", "", "", "", "", 0, 0))
                 }
                 in 500..599 -> {
                     Toast.makeText(application, "Server failed to get user", Toast.LENGTH_SHORT).show()
-                    emit(User())
+                    emit(User(0, "", "", "", "", "", "", "", 0, 0))
                 }
             }
-        }
+        }*/
+    init {
+        _user.value = USER
+    }
 
     val user: LiveData<User>
         get() = _user
