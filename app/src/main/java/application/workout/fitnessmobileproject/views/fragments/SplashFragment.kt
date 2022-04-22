@@ -16,7 +16,7 @@ class SplashFragment : Fragment() {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.Default) { (activity?.application as FitnessApplication).validateUser() }
+            withContext(Dispatchers.IO) { (activity?.application as FitnessApplication).validateUser() }
             delay(3000)
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }

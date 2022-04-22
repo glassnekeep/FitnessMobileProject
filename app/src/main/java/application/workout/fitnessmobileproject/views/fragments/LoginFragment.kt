@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentLoginBinding
 import application.workout.fitnessmobileproject.viewModels.LoginViewModel
-import application.workout.fitnessmobileproject.viewModels.SharedSplashViewModel
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
 
@@ -18,7 +20,7 @@ class LoginFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val viewModel: SharedSplashViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +32,28 @@ class LoginFragment : Fragment() {
     ): View? {
         //Using ViewBinding here
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.user.observe(this) { User ->
+        /*viewModel.user.observe(this) { User ->
             binding.usernameEditText.setText(User.username)
             binding.passwordEditTextText.setText(User.phoneNumber)
-        }
+        }*/
 
         binding.loginButton.setOnClickListener {
+            lifecycleScope.launch {
+                if (viewModel.doLogin(binding.usernameEditText.text.toString(), binding.passwordEditTextText.text.toString())) {
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                } else {
+                    Toast.makeText(activity, "Invalid login", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
+        binding.signUpButton.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 

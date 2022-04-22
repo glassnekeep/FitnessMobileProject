@@ -13,22 +13,7 @@ import kotlinx.coroutines.launch
 
 class SharedSplashViewModel(application: Application): AndroidViewModel(application) {
     private var _user = MutableLiveData<User>()
-        /*liveData<User> {
-            val user = UserRepository.getInstance(application).getUserWithUsername(username)
-            when(user.status.value) {
-                in 200..299 -> {
-                    emit(user.body())
-                }
-                in 400..499 -> {
-                    Toast.makeText(application, "Client failed to get user", Toast.LENGTH_SHORT).show()
-                    emit(User(0, "", "", "", "", "", "", "", 0, 0))
-                }
-                in 500..599 -> {
-                    Toast.makeText(application, "Server failed to get user", Toast.LENGTH_SHORT).show()
-                    emit(User(0, "", "", "", "", "", "", "", 0, 0))
-                }
-            }
-        }*/
+
     init {
         _user.value = USER
     }
