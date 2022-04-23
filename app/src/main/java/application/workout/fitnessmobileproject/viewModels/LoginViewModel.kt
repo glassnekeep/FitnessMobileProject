@@ -60,7 +60,7 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
             USER = UserRepository.getInstance(getApplication(), username, password).getUserWithUsername(username).body<User>()
         }*/
         withContext(viewModelScope.coroutineContext + Dispatchers.IO) {
-            USER = try {
+            /*USER = try {
                 UserRepository.getInstance(getApplication(), username, password)
                     .getUserWithUsername(username).body<User>()
             } catch (e: NotFoundServerApiException) {
@@ -72,7 +72,12 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
             getApplication<FitnessApplication>().setCredentials(username, password)
             true
         } else {
-            false
+            false*/
+            (getApplication() as FitnessApplication).let {
+                it.setCredentials(username, password)
+                it.validateUser()
+            }
         }
+        return USER == null
     }
 }

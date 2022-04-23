@@ -5,6 +5,7 @@ import android.util.Log
 import application.workout.fitnessmobileproject.model.models.*
 import application.workout.fitnessmobileproject.model.repository.UserRepository
 import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
+import io.ktor.client.*
 import io.ktor.client.call.*
 import kotlinx.coroutines.*
 
@@ -13,6 +14,7 @@ class FitnessApplication: Application() {
     private val USERNAME = "username"
     private val PASSWORD = "password"
     var user: User? = null
+    var client: HttpClient? = null
 
     fun setCredentials(username: String, password: String) {
         val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
@@ -33,14 +35,12 @@ class FitnessApplication: Application() {
     suspend fun validateUser() {
         //setCredentials("test", "password")
         val username = getUsername() ?: ""
+        val password = getPassword() ?: ""
         USER = try {
-            UserRepository.getInstance(this, getUsername()!!, getPassword()!!).getUserWithUsername(username).body()
+            UserRepository.getInstance(this, username, password).getUserWithUsername(username).body()
         } catch (e: NotFoundServerApiException) {
             null
         }
-    }
-    fun checkUser(): Boolean {
-        return user == null
     }
     companion object {
         var user: User? = null

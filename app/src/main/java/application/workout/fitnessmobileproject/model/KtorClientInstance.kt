@@ -27,6 +27,8 @@ object KtorClientInstance {
                     }
                 }
             }
+        }  else {
+            client?.plugin(Auth)?.basic { BasicAuthCredentials(username, password) }
         }
         return client!!
     }

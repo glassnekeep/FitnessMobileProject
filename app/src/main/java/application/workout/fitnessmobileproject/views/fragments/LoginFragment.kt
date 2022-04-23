@@ -37,11 +37,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*viewModel.user.observe(this) { User ->
-            binding.usernameEditText.setText(User.username)
-            binding.passwordEditTextText.setText(User.phoneNumber)
-        }*/
-
         binding.loginButton.setOnClickListener {
             lifecycleScope.launch {
                 if (viewModel.doLogin(binding.usernameEditText.text.toString(), binding.passwordEditTextText.text.toString())) {
