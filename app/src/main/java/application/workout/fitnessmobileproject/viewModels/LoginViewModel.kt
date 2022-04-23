@@ -68,11 +68,11 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
                 null
             }
         }
-        if (USER != null) {
+        return if (USER != null) {
             getApplication<FitnessApplication>().setCredentials(username, password)
-            return true
+            true
         } else {
-            return false
+            false
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.utils.FitnessApplication
+import application.workout.fitnessmobileproject.utils.USER
 import kotlinx.coroutines.*
 
 class SplashFragment : Fragment() {
@@ -17,8 +18,12 @@ class SplashFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) { (activity?.application as FitnessApplication).validateUser() }
-            delay(3000)
-            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            delay(1000L)
+            if(USER != null) {
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
         }
     }
 
