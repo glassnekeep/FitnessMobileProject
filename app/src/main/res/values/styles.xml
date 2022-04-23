@@ -23,4 +23,15 @@
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
+    
+    <style name="ShapeAppearanceOverlay" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="flipper_images">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>
