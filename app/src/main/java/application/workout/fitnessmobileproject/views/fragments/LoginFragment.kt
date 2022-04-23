@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
         binding.loginButton.setOnClickListener {
             lifecycleScope.launch {
                 if (viewModel.doLogin(binding.usernameEditText.text.toString(), binding.passwordEditTextText.text.toString())) {
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeViewPagerFragment)
                 } else {
                     Toast.makeText(activity, "Invalid login", Toast.LENGTH_SHORT).show()
                 }

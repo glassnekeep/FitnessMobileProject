@@ -31,7 +31,7 @@ class FitnessApplication: Application() {
         return preferences.getString(PASSWORD, "")
     }
     suspend fun validateUser() {
-        setCredentials("test", "password")
+        //setCredentials("test", "password")
         val username = getUsername() ?: ""
         USER = try {
             UserRepository.getInstance(this, getUsername()!!, getPassword()!!).getUserWithUsername(username).body()

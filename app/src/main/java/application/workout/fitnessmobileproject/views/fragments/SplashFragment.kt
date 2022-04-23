@@ -16,11 +16,12 @@ class SplashFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        //(activity?.application as FitnessApplication).setCredentials("ivan", "ivan")
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) { (activity?.application as FitnessApplication).validateUser() }
             delay(1000L)
             if(USER != null) {
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_homeViewPagerFragment)
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
