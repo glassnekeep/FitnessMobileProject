@@ -78,6 +78,6 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
                 it.validateUser()
             }
         }
-        return USER == null
+        return USER != null
     }
 }
