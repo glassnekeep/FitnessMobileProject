@@ -2,9 +2,11 @@ package application.workout.fitnessmobileproject.model
 
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
+import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.auth.*
 import io.ktor.client.plugins.auth.providers.*
+import io.ktor.client.plugins.cache.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.http.ContentType.Application.Json
 import io.ktor.http.auth.*
@@ -26,9 +28,10 @@ object KtorClientInstance {
                         realm = "Access to major paths"
                     }
                 }
+                install(HttpCache)
             }
         }  else {
-            client?.plugin(Auth)?.basic { BasicAuthCredentials(username, password) }
+            client?.plugin(Auth)?.basic { BasicAuthCredentials(username = username, password = password) }
         }
         return client!!
     }

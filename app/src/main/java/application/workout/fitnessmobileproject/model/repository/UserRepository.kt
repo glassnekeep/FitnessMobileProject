@@ -118,27 +118,82 @@ class UserRepository private constructor(val application: FitnessApplication, va
     }
 
     override suspend fun createUser(user: User): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.post(USER_ROOT) {
+                setBody(User)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on creating user = ${user.toString()}")
+            throw NotFoundServerApiException("Failed to create user")
+        }
+        return response
     }
 
     override suspend fun updateUser(id: Int, user: User): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.put(USER_ROOT) {
+                parameter("id", id)
+                setBody(user)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on updating user with id = $id")
+            throw NotFoundServerApiException("Failed to update a user")
+        }
+        return response
     }
 
     override suspend fun deleteUserWithId(id: Int): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.delete(USER_ROOT) {
+                parameter("id", id)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on deleting user with id = $id")
+            throw NotFoundServerApiException("Failed to delete user")
+        }
+        return response
     }
 
     override suspend fun deleteUserWithEmail(email: String): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.delete(USER_ROOT) {
+                parameter("email", email)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on deleting user with email = $email")
+            throw NotFoundServerApiException("Failed to delete user")
+        }
+        return response
     }
 
     override suspend fun deleteUserWithUsername(username: String): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.delete(USER_ROOT) {
+                parameter("username", username)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on deleting user with username = $username")
+            throw NotFoundServerApiException("Failed to delete user")
+        }
+        return response
     }
 
     override suspend fun deleteUserWithPhoneNumber(phoneNumber: String): HttpResponse {
-        TODO("Not yet implemented")
+        val response: HttpResponse = withContext(Dispatchers.IO) {
+            client.delete(USER_ROOT) {
+                parameter("phoneNumber", phoneNumber)
+            }
+        }
+        if (response.status.value in 300..600) {
+            Log.d("exception", "exception on deleting user with phone number = $phoneNumber")
+            throw NotFoundServerApiException("Failed to delete user")
+        }
+        return response
     }
 
     companion object {
