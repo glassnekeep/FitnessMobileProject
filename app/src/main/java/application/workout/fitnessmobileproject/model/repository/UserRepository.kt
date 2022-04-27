@@ -23,8 +23,10 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import java.net.HttpRetryException
 import java.util.*
+import java.util.concurrent.TimeoutException
 
 class UserRepository private constructor(val application: FitnessApplication, val username: String, val password: String) : UserApi {
 
@@ -66,11 +68,15 @@ class UserRepository private constructor(val application: FitnessApplication, va
     }
 
     override suspend fun getUserWithUsername(username: String): HttpResponse {
-        val response = withContext(Dispatchers.IO) {
-            client.get(USER_ROOT) {
-                parameter("username", username)
-                basicAuth(username = username, password = password)
+        val response = try {
+            withContext(Dispatchers.IO) {
+                client.get(USER_ROOT) {
+                    parameter("username", username)
+                    basicAuth(username = username, password = password)
+                }
             }
+        } catch(e: Throwable) {
+            throw TimeoutException("Long connection")
         }
         if (response.status.value in 300..500) {
             Log.d("exception", "300-499" + "username = $username, password = $password")

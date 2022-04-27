@@ -35,6 +35,9 @@ object KtorClientInstance {
                 install(Logging) {
                     logger = Logger.ANDROID
                 }
+                install(HttpTimeout) {
+                    requestTimeoutMillis = 5000
+                }
                 install(HttpRequestRetry) {
                     maxRetries = 5
                     retryIf { request, response ->

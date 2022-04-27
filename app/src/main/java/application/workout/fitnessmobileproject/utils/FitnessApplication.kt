@@ -1,13 +1,16 @@
 package application.workout.fitnessmobileproject.utils
 
 import android.app.Application
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import application.workout.fitnessmobileproject.model.models.*
 import application.workout.fitnessmobileproject.model.repository.UserRepository
 import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
 import io.ktor.client.*
 import io.ktor.client.call.*
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class FitnessApplication: Application() {
 
@@ -38,9 +41,12 @@ class FitnessApplication: Application() {
         val password = getPassword() ?: ""
         USER = try {
             UserRepository.getInstance(this, username, password).getUserWithUsername(username).body()
-        } catch (e: NotFoundServerApiException) {
+        } catch (e: Exception) {
             Log.d("username", getUsername() ?: "")
             Log.d("password", getPassword() ?: "")
+            withContext(Dispatchers.Main) {
+                Toast.makeText(applicationContext, "Error = $e", Toast.LENGTH_SHORT).show()
+            }
             null
         }
     }
