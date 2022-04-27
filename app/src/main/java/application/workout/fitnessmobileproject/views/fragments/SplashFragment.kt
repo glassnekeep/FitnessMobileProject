@@ -16,7 +16,7 @@ class SplashFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        (activity?.application as FitnessApplication).setCredentials("ivan", "ivan")
+        //(activity?.application as FitnessApplication).setCredentials("ivan", "ivan")
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) { (activity?.application as FitnessApplication).validateUser() }
             delay(1000L)

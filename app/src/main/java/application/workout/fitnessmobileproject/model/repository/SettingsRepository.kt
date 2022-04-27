@@ -95,4 +95,14 @@ class SettingsRepository private constructor(val username: String, val password:
             Log.d("settings", "Deleted settings with user successfully")
         }
     }
+
+    companion object {
+        private var INSTANCE: SettingsRepository? = null
+        fun getInstance(username: String, password: String): SettingsRepository {
+            if (INSTANCE?.username != username || INSTANCE?.password != password || INSTANCE == null) {
+                INSTANCE = SettingsRepository(username, password)
+            }
+            return INSTANCE!!
+        }
+    }
 }

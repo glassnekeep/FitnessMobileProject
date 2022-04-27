@@ -39,6 +39,8 @@ class FitnessApplication: Application() {
         USER = try {
             UserRepository.getInstance(this, username, password).getUserWithUsername(username).body()
         } catch (e: NotFoundServerApiException) {
+            Log.d("username", getUsername() ?: "")
+            Log.d("password", getPassword() ?: "")
             null
         }
     }
