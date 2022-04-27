@@ -58,8 +58,8 @@ class SettingsRepository private constructor(val username: String, val password:
 
     override suspend fun updateSettings(id: Int, settings: Settings) {
         client.runCatching {
-            post(SETTINGS_ROOT) {
-                parameter("id", id)
+            put("$SETTINGS_ROOT/$id") {
+                //parameter("id", id)
                 setBody(settings)
             }
         }.onFailure {

@@ -38,6 +38,7 @@ object KtorClientInstance {
                 install(HttpTimeout) {
                     requestTimeoutMillis = 5000
                 }
+                expectSuccess = true
                 install(HttpRequestRetry) {
                     maxRetries = 5
                     retryIf { request, response ->
