@@ -28,14 +28,14 @@ import java.net.HttpRetryException
 import java.util.*
 import java.util.concurrent.TimeoutException
 
-class UserRepository private constructor(val application: FitnessApplication, val username: String, val password: String) : UserApi {
+class UserRepository private constructor(/*val application: FitnessApplication,*/ val username: String, val password: String) : UserApi {
 
     private val USER_ROOT = "http://10.0.2.2:8080/user"
     private val USERS_ROOT = "http://10.0.2.2:8080/users"
 
     //TODO тут нужно определить объект userDao и модели бд Room
 
-    private val userDao: UserDao = UserDatabase.getDatabase(application).getUserDao()
+    //private val userDao: UserDao = UserDatabase.getDatabase(application).getUserDao()
     private var client: HttpClient = KtorClientInstance.getInstance(username, password)
 
     override suspend fun getUserWithId(id: Int): HttpResponse {
@@ -205,11 +205,12 @@ class UserRepository private constructor(val application: FitnessApplication, va
     companion object {
         private var INSTANCE: UserRepository? = null
         private var client: HttpClient? = null
-        fun getInstance(application: Application, username: String, password: String): UserRepository {
+        fun getInstance(/*application: Application,*/ username: String, password: String): UserRepository {
             if (INSTANCE?.username != username || INSTANCE?.password != password || INSTANCE == null) {
-                INSTANCE = UserRepository(application = application as FitnessApplication, username, password)
+                INSTANCE = UserRepository(/*application = application as FitnessApplication, */username, password)
             }
             return INSTANCE!!
         }
+        //getInstance overloading
     }
 }

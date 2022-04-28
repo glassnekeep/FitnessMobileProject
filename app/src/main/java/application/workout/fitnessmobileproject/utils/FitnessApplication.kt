@@ -19,6 +19,10 @@ class FitnessApplication: Application() {
     var user: User? = null
     var client: HttpClient? = null
 
+    override fun onTerminate() {
+        super.onTerminate()
+    }
+
     fun setCredentials(username: String, password: String) {
         val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
         preferences.edit().let {
@@ -40,7 +44,7 @@ class FitnessApplication: Application() {
         val username = getUsername() ?: ""
         val password = getPassword() ?: ""
         USER = try {
-            UserRepository.getInstance(this, username, password).getUserWithUsername(username).body()
+            UserRepository.getInstance(/*this,*/ username, password).getUserWithUsername(username).body()
         } catch (e: Exception) {
             Log.d("username", getUsername() ?: "")
             Log.d("password", getPassword() ?: "")
