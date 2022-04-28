@@ -62,7 +62,7 @@ class RegisterFragment : Fragment() {
                 binding.loginEditText.error = "Enter email!"
                 return@setOnClickListener
             }
-            if (binding.passwordConfirmEditText.editText?.text != binding.passwordEditText.editText?.text) {
+            if (binding.passwordConfirmEditText.editText?.text.toString() != binding.passwordEditText.editText?.text.toString()) {
                 binding.passwordConfirmEditText.error = "Passwords don't match!"
                 return@setOnClickListener
             }

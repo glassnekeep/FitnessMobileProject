@@ -13,7 +13,9 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.http.ContentType.Application.Json
 import io.ktor.http.auth.*
+import io.ktor.serialization.kotlinx.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.serializer
 
 object KtorClientInstance {
     private var client: HttpClient? = null

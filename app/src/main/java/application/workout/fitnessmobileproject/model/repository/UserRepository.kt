@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.res.Resources
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
-import application.workout.fitnessmobileproject.model.dao.UserDao
-import application.workout.fitnessmobileproject.model.dao.UserDatabase
 import application.workout.fitnessmobileproject.model.models.User
 import application.workout.fitnessmobileproject.model.repository.routes.UserApi
 import application.workout.fitnessmobileproject.utils.*
@@ -126,7 +124,8 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
     override suspend fun createUser(user: User): HttpResponse {
         val response: HttpResponse = withContext(Dispatchers.IO) {
             client.post(USER_ROOT) {
-                setBody(User)
+                contentType(ContentType.Application.Json)
+                setBody(user)
             }
         }
         if (response.status.value in 300..600) {

@@ -1,6 +1,5 @@
 package application.workout.fitnessmobileproject.viewModels
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.User
