@@ -17,7 +17,7 @@ interface UserApi {
     suspend fun getUserWithPhoneNumber(phoneNumber: String) : HttpResponse?
     suspend fun getAllUsers() : HttpResponse?
     suspend fun getAllUsersId() : HttpResponse?
-    suspend fun createUser(user: User) : HttpResponse?
+    suspend fun createUser(user: User)// : HttpResponse?
     suspend fun updateUser(id: Int, user: User) : HttpResponse?
     suspend fun deleteUserWithId(id: Int) : HttpResponse?
     suspend fun deleteUserWithEmail(email: String) : HttpResponse?

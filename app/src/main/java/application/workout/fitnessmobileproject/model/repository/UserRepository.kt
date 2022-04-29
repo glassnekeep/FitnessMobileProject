@@ -121,8 +121,8 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
         return response
     }
 
-    override suspend fun createUser(user: User): HttpResponse {
-        val response: HttpResponse = withContext(Dispatchers.IO) {
+    override suspend fun createUser(user: User)/*: HttpResponse*/ {
+        /*val response: HttpResponse = withContext(Dispatchers.IO) {
             client.post(USER_ROOT) {
                 contentType(ContentType.Application.Json)
                 setBody(user)
@@ -132,7 +132,20 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
             Log.d("exception", "exception on creating user = ${user.toString()}")
             throw NotFoundServerApiException("Failed to create user")
         }
-        return response
+        return response*/
+        withContext(Dispatchers.IO) {
+            client.runCatching {
+                post(USER_ROOT) {
+                    contentType(ContentType.Application.Json)
+                    setBody(user)
+                }
+            }.onFailure {
+                Log.d("exception", "error = ${it.message} of posting a new user")
+                throw it
+            }.onSuccess {
+                Log.d("user", "Posted user successfully")
+            }
+        }
     }
 
     override suspend fun updateUser(id: Int, user: User): HttpResponse {
