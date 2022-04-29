@@ -1,20 +1,14 @@
 package application.workout.fitnessmobileproject.viewModels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.User
-import application.workout.fitnessmobileproject.model.repository.UserRepository
 import application.workout.fitnessmobileproject.utils.FitnessApplication
 import application.workout.fitnessmobileproject.utils.USER
-import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
-import io.ktor.client.call.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginViewModel(application: Application): AndroidViewModel(application) {

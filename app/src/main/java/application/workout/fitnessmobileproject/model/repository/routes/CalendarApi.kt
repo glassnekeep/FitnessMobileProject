@@ -7,9 +7,9 @@ import io.ktor.client.statement.*
 interface CalendarApi {
     /*suspend fun getCalendarWithId(id: Int) : Calendar
     suspend fun getCalendarListWithUser(id: Int) : List<Calendar>*/
-    suspend fun getCalendarWithId(id: Int) : HttpResponse
-    suspend fun getCalendarListWithUser(id: Int) : HttpResponse
-    suspend fun createCalendar(calendar: Calendar) : HttpResponse
-    suspend fun updateCalendar(id: Int, calendar: Calendar) : HttpResponse
-    suspend fun deleteCalendar(id: Int) : HttpResponse
+    suspend fun getCalendarWithId(id: Int) : Calendar//HttpResponse
+    suspend fun getCalendarListWithUser(id: Int) : List<Calendar>//HttpResponse
+    suspend fun createCalendar(calendar: Calendar)// : HttpResponse
+    suspend fun updateCalendar(id: Int, calendar: Calendar)// : HttpResponse
+    suspend fun deleteCalendar(id: Int)// : HttpResponse
 }

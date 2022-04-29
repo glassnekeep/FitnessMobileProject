@@ -4,11 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.Settings
-import application.workout.fitnessmobileproject.model.models.User
-import application.workout.fitnessmobileproject.model.repository.SettingsRepository
+import application.workout.fitnessmobileproject.model.repository.repositories.SettingsRepository
 import application.workout.fitnessmobileproject.utils.USER
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class SettingsViewModel: ViewModel() {
 

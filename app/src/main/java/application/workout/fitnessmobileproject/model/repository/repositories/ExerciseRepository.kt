@@ -1,4 +1,4 @@
-package application.workout.fitnessmobileproject.model.repository
+package application.workout.fitnessmobileproject.model.repository.repositories
 
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
@@ -6,7 +6,6 @@ import application.workout.fitnessmobileproject.model.models.Exercise
 import application.workout.fitnessmobileproject.model.repository.routes.ExerciseApi
 import io.ktor.client.call.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
@@ -50,6 +49,7 @@ class ExerciseRepository private constructor(val username: String, val password:
             withContext(Dispatchers.IO) {
                 post(EXERCISE_ROOT) {
                     setBody(exercise)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -65,6 +65,7 @@ class ExerciseRepository private constructor(val username: String, val password:
             withContext(Dispatchers.IO) {
                 put("$EXERCISE_ROOT/$id") {
                     setBody(exercise)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -78,13 +79,25 @@ class ExerciseRepository private constructor(val username: String, val password:
     override suspend fun deleteExercise(id: Int)/*: HttpResponse*/ {
         client.runCatching {
             withContext(Dispatchers.IO) {
-                delete("$EXERCISE_ROOT/$id")
+                delete("$EXERCISE_ROOT/$id") {
+                    basicAuth(username = username, password = password)
+                }
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of deleting an exercise")
             throw it
         }.onSuccess {
             Log.d("exercise", "Exercise deleted successfully")
+        }
+    }
+
+    companion object {
+        private var INSTANCE: ExerciseRepository? = null
+        fun getInstance(username: String, password: String): ExerciseRepository {
+            if (INSTANCE?.username != username || INSTANCE?.password != password || INSTANCE == null) {
+                INSTANCE = ExerciseRepository(username, password)
+            }
+            return INSTANCE!!
         }
     }
 }

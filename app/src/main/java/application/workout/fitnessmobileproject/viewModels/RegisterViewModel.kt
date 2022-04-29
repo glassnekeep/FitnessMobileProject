@@ -3,7 +3,7 @@ package application.workout.fitnessmobileproject.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.User
-import application.workout.fitnessmobileproject.model.repository.UserRepository
+import application.workout.fitnessmobileproject.model.repository.repositories.UserRepository
 import application.workout.fitnessmobileproject.utils.exceptions.EmptyFieldException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

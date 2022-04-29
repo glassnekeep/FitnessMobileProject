@@ -1,10 +1,9 @@
-package application.workout.fitnessmobileproject.model.repository
+package application.workout.fitnessmobileproject.model.repository.repositories
 
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
 import application.workout.fitnessmobileproject.model.models.Program
 import application.workout.fitnessmobileproject.model.repository.routes.ProgramApi
-import application.workout.fitnessmobileproject.utils.USER
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
@@ -123,6 +122,7 @@ class ProgramRepository private constructor(val username: String, val password: 
             withContext(Dispatchers.IO) {
                 post(PROGRAM_ROOT) {
                     setBody(program)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -138,6 +138,7 @@ class ProgramRepository private constructor(val username: String, val password: 
             withContext(Dispatchers.IO) {
                 put("$PROGRAM_ROOT/$id") {
                     setBody(program)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -151,7 +152,9 @@ class ProgramRepository private constructor(val username: String, val password: 
     override suspend fun deleteProgram(programId: Int) {
         client.runCatching {
             withContext(Dispatchers.IO) {
-                delete("${PROGRAM_ROOT}/$programId")
+                delete("${PROGRAM_ROOT}/$programId") {
+                    basicAuth(username = username, password = password)
+                }
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of deleting a program")
@@ -166,6 +169,7 @@ class ProgramRepository private constructor(val username: String, val password: 
             withContext(Dispatchers.IO) {
                 delete("$PROGRAM_ROOT/$programId") {
                     parameter("exercise", exerciseId)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -181,6 +185,7 @@ class ProgramRepository private constructor(val username: String, val password: 
             withContext(Dispatchers.IO) {
                 delete("$PROGRAM_ROOT/$programId") {
                     parameter("user", userId)
+                    basicAuth(username = username, password = password)
                 }
             }
         }.onFailure {
@@ -188,6 +193,16 @@ class ProgramRepository private constructor(val username: String, val password: 
             throw it
         }.onSuccess {
             Log.d("program", "Successfully deleted user from program")
+        }
+    }
+
+    companion object {
+        private var INSTANCE: ProgramRepository? = null
+        fun getInstance(username: String, password: String): ProgramRepository {
+            if (INSTANCE?.username != username || INSTANCE?.password != password || INSTANCE == null) {
+                INSTANCE = ProgramRepository(username, password)
+            }
+            return INSTANCE!!
         }
     }
 }

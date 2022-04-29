@@ -1,12 +1,10 @@
 package application.workout.fitnessmobileproject.utils
 
 import android.app.Application
-import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import application.workout.fitnessmobileproject.model.models.*
-import application.workout.fitnessmobileproject.model.repository.UserRepository
-import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
+import application.workout.fitnessmobileproject.model.repository.repositories.UserRepository
 import io.ktor.client.*
 import io.ktor.client.call.*
 import kotlinx.coroutines.*

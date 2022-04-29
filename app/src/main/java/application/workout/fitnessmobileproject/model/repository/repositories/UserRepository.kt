@@ -1,29 +1,16 @@
-package application.workout.fitnessmobileproject.model.repository
+package application.workout.fitnessmobileproject.model.repository.repositories
 
-import android.app.Application
-import android.content.res.Resources
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
 import application.workout.fitnessmobileproject.model.models.User
 import application.workout.fitnessmobileproject.model.repository.routes.UserApi
-import application.workout.fitnessmobileproject.utils.*
 import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
 import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.engine.android.*
-import io.ktor.client.plugins.auth.*
-import io.ktor.client.plugins.auth.providers.*
-import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
-import java.lang.Exception
-import java.net.HttpRetryException
-import java.util.*
 import java.util.concurrent.TimeoutException
 
 class UserRepository private constructor(/*val application: FitnessApplication,*/ val username: String, val password: String) : UserApi {
@@ -138,6 +125,7 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
                 post(USER_ROOT) {
                     contentType(ContentType.Application.Json)
                     setBody(user)
+                    basicAuth(username = username, password = password)
                 }
             }.onFailure {
                 Log.d("exception", "error = ${it.message} of posting a new user")
@@ -153,6 +141,7 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
             client.put(USER_ROOT) {
                 parameter("id", id)
                 setBody(user)
+                basicAuth(username = username, password = password)
             }
         }
         if (response.status.value in 300..600) {
@@ -166,6 +155,7 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
         val response: HttpResponse = withContext(Dispatchers.IO) {
             client.delete(USER_ROOT) {
                 parameter("id", id)
+                basicAuth(username = username, password = password)
             }
         }
         if (response.status.value in 300..600) {
@@ -179,6 +169,7 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
         val response: HttpResponse = withContext(Dispatchers.IO) {
             client.delete(USER_ROOT) {
                 parameter("email", email)
+                basicAuth(username = username, password = password)
             }
         }
         if (response.status.value in 300..600) {
@@ -192,6 +183,7 @@ class UserRepository private constructor(/*val application: FitnessApplication,*
         val response: HttpResponse = withContext(Dispatchers.IO) {
             client.delete(USER_ROOT) {
                 parameter("username", username)
+                basicAuth(username = username, password = password)
             }
         }
         if (response.status.value in 300..600) {

@@ -1,4 +1,4 @@
-package application.workout.fitnessmobileproject.model.repository
+package application.workout.fitnessmobileproject.model.repository.repositories
 
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
@@ -8,7 +8,6 @@ import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerA
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -47,6 +46,7 @@ class SettingsRepository private constructor(val username: String, val password:
         client.runCatching {
             post(SETTINGS_ROOT) {
                 setBody(settings)
+                basicAuth(username = username, password = password)
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of posting settings")
@@ -61,6 +61,7 @@ class SettingsRepository private constructor(val username: String, val password:
             put("$SETTINGS_ROOT/$id") {
                 //parameter("id", id)
                 setBody(settings)
+                basicAuth(username = username, password = password)
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of updating settings")
@@ -74,6 +75,7 @@ class SettingsRepository private constructor(val username: String, val password:
         client.runCatching {
             delete(SETTINGS_ROOT) {
                 parameter("id", id)
+                basicAuth(username = username, password = password)
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of deleting settings")
@@ -87,6 +89,7 @@ class SettingsRepository private constructor(val username: String, val password:
         client.runCatching {
             delete(SETTINGS_ROOT) {
                 parameter("user", userId)
+                basicAuth(username = username, password = password)
             }
         }.onFailure {
             Log.d("exception", "error = ${it.message} of deleting settings")
