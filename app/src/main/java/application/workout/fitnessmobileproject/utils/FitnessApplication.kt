@@ -2,17 +2,24 @@ package application.workout.fitnessmobileproject.utils
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import application.workout.fitnessmobileproject.model.models.*
-import application.workout.fitnessmobileproject.model.repository.UserRepository
-import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException
+import application.workout.fitnessmobileproject.model.repository.repositories.UserRepository
+import io.ktor.client.*
 import io.ktor.client.call.*
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class FitnessApplication: Application() {
 
     private val USERNAME = "username"
     private val PASSWORD = "password"
     var user: User? = null
+    var client: HttpClient? = null
+
+    override fun onTerminate() {
+        super.onTerminate()
+    }
 
     fun setCredentials(username: String, password: String) {
         val preferences = applicationContext.getSharedPreferences("login_info", MODE_PRIVATE)
@@ -31,16 +38,19 @@ class FitnessApplication: Application() {
         return preferences.getString(PASSWORD, "")
     }
     suspend fun validateUser() {
-        setCredentials("test", "password")
+        //setCredentials("test", "password")
         val username = getUsername() ?: ""
+        val password = getPassword() ?: ""
         USER = try {
-            UserRepository.getInstance(this, getUsername()!!, getPassword()!!).getUserWithUsername(username).body()
-        } catch (e: NotFoundServerApiException) {
+            UserRepository.getInstance(/*this,*/ username, password).getUserWithUsername(username).body()
+        } catch (e: Exception) {
+            Log.d("username", getUsername() ?: "")
+            Log.d("password", getPassword() ?: "")
+            withContext(Dispatchers.Main) {
+                Toast.makeText(applicationContext, "Error = $e", Toast.LENGTH_SHORT).show()
+            }
             null
         }
-    }
-    fun checkUser(): Boolean {
-        return user == null
     }
     companion object {
         var user: User? = null

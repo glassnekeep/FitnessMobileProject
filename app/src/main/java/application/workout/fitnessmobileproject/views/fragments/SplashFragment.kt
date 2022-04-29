@@ -16,11 +16,12 @@ class SplashFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        (activity?.application as FitnessApplication).setCredentials("ivan", "ivan")
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) { (activity?.application as FitnessApplication).validateUser() }
             delay(1000L)
             if(USER != null) {
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_homeViewPagerFragment)
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
@@ -31,7 +32,6 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 }

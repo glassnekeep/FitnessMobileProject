@@ -1,14 +1,10 @@
 package application.workout.fitnessmobileproject.viewModels
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.*
 import application.workout.fitnessmobileproject.model.models.User
-import application.workout.fitnessmobileproject.model.repository.UserRepository
 import application.workout.fitnessmobileproject.utils.LoadingState
 import application.workout.fitnessmobileproject.utils.USER
-import application.workout.fitnessmobileproject.utils.USERNAME
-import io.ktor.client.call.*
 import kotlinx.coroutines.launch
 
 class SharedSplashViewModel(application: Application): AndroidViewModel(application) {

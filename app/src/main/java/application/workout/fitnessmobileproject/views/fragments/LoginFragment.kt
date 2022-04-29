@@ -37,15 +37,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*viewModel.user.observe(this) { User ->
-            binding.usernameEditText.setText(User.username)
-            binding.passwordEditTextText.setText(User.phoneNumber)
-        }*/
-
         binding.loginButton.setOnClickListener {
             lifecycleScope.launch {
                 if (viewModel.doLogin(binding.usernameEditText.text.toString(), binding.passwordEditTextText.text.toString())) {
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeViewPagerFragment)
                 } else {
                     Toast.makeText(activity, "Invalid login", Toast.LENGTH_SHORT).show()
                 }
