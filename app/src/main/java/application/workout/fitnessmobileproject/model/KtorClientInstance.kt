@@ -23,7 +23,7 @@ object KtorClientInstance {
         if (client == null) {
             client = HttpClient(Android) {
                 install(ContentNegotiation) {
-                    json()
+                    json(/*contentType = ContentType.Application.Json*/)
                 }
                 install(Auth) {
                     basic {

@@ -2,7 +2,9 @@ package application.workout.fitnessmobileproject.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import application.workout.fitnessmobileproject.model.models.Settings
 import application.workout.fitnessmobileproject.model.models.User
+import application.workout.fitnessmobileproject.model.repository.repositories.SettingsRepository
 import application.workout.fitnessmobileproject.model.repository.repositories.UserRepository
 import application.workout.fitnessmobileproject.utils.exceptions.EmptyFieldException
 import kotlinx.coroutines.Dispatchers
@@ -61,6 +63,9 @@ class RegisterViewModel: ViewModel() {
             viewModelScope.launch(Dispatchers.Main) {
                 try {
                     UserRepository.getInstance(username = _username, password = _password).createUser(user)
+                    /*SettingsRepository.getInstance(username = _username, password = _password).createSettings(
+                        Settings(id = 0, user = user, restTime = 15, countDownTime = 20)
+                    )*/
                 } catch (exception: Exception) {
                     throw exception
                 }
