@@ -2,6 +2,7 @@ package application.workout.fitnessmobileproject.model.repository.repositories
 
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
+import application.workout.fitnessmobileproject.model.dao.UserDao_Impl
 import application.workout.fitnessmobileproject.model.models.User
 import application.workout.fitnessmobileproject.model.repository.routes.UserApi
 import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerApiException

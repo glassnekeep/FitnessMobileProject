@@ -8,6 +8,7 @@ import application.workout.fitnessmobileproject.utils.exceptions.NotFoundServerA
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -45,6 +46,7 @@ class SettingsRepository private constructor(val username: String, val password:
     override suspend fun createSettings(settings: Settings) {
         client.runCatching {
             post(SETTINGS_ROOT) {
+                contentType(ContentType.Application.Json)
                 setBody(settings)
                 basicAuth(username = username, password = password)
             }
@@ -52,7 +54,7 @@ class SettingsRepository private constructor(val username: String, val password:
             Log.d("exception", "error = ${it.message} of posting settings")
             throw it
         }.onSuccess {
-            Log.d("settings", "Posted settings successfully")
+            Log.d("settings", "Posted settings successfully; $settings")
         }
     }
 
