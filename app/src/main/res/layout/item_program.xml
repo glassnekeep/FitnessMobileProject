@@ -21,6 +21,7 @@
         android:orientation="vertical" >
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_program"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,6 +31,7 @@
             android:background="@drawable/image5" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/program_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
