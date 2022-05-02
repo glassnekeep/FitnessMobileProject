@@ -55,5 +55,18 @@
         android:id="@+id/homeViewPagerFragment"
         android:name="application.workout.fitnessmobileproject.views.fragments.HomeViewPagerFragment"
         android:label="fragment_home_view_pager"
-        tools:layout="@layout/fragment_home_view_pager" />
+        tools:layout="@layout/fragment_home_view_pager" >
+        <action
+            android:id="@+id/action_homeViewPagerFragment_to_programFragment"
+            app:destination="@id/programFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/programFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.ProgramFragment"
+        android:label="fragment_program"
+        tools:layout="@layout/fragment_program" >
+        <argument
+            android:name="program_id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
