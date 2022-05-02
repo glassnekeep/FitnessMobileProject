@@ -5,6 +5,7 @@ import application.workout.fitnessmobileproject.model.KtorClientInstance
 import application.workout.fitnessmobileproject.model.models.Program
 import application.workout.fitnessmobileproject.model.repository.routes.ProgramApi
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -13,8 +14,8 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class ProgramRepository private constructor(val username: String, val password: String): ProgramApi {
-    private val PROGRAM_ROOT = "program"
-    private val PROGRAMS_ROOT = "programs"
+    private val PROGRAM_ROOT = "http://10.0.2.2:8080/program"
+    private val PROGRAMS_ROOT = "http://10.0.2.2:8080/programs"
     private val USER_ROOT = "user"
     private val USERS_ROOT = "users"
     private val NEW_ROOT = "new"
@@ -69,13 +70,13 @@ class ProgramRepository private constructor(val username: String, val password: 
         }
     }
 
-    override suspend fun getAllPrograms(): HttpResponse {
+    override suspend fun getAllPrograms(): List<Program>/*HttpResponse*/ {
         return withContext(Dispatchers.IO) {
             try {
                 client.get(PROGRAMS_ROOT) {
                     basicAuth(username = username, password = password)
                     expectSuccess = true
-                }
+                }.body<List<Program>>()
             } catch (exception: Exception) {
                 Log.d("exception", "$exception of getting program list")
                 throw exception

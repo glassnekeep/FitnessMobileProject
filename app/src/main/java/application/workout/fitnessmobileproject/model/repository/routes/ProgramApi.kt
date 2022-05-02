@@ -12,7 +12,7 @@ interface ProgramApi {
     suspend fun getProgramWithId(id: Int) : HttpResponse
     suspend fun getProgramListWithUser(id: Int) : HttpResponse
     suspend fun getUserListWithProgram(id: Int) : HttpResponse
-    suspend fun getAllPrograms() : HttpResponse
+    suspend fun getAllPrograms() : List<Program> //HttpResponse
     suspend fun addUserToProgram(userId: Int, programId: Int) //: HttpResponse
     suspend fun addExerciseToProgram(exerciseId: Int, programId: Int) //: HttpResponse
     suspend fun createProgram(program: Program) //: HttpResponse
