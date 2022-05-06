@@ -3,6 +3,7 @@ package application.workout.fitnessmobileproject.model.repository.repositories
 import android.util.Log
 import application.workout.fitnessmobileproject.model.KtorClientInstance
 import application.workout.fitnessmobileproject.model.models.Program
+import application.workout.fitnessmobileproject.model.models.User
 import application.workout.fitnessmobileproject.model.repository.routes.ProgramApi
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -20,7 +21,7 @@ class ProgramRepository private constructor(val username: String, val password: 
     private val USERS_ROOT = "users"
     private val NEW_ROOT = "new"
     private val client: HttpClient = KtorClientInstance.getInstance(username, password)
-    override suspend fun getProgramWithId(id: Int): HttpResponse {
+    override suspend fun getProgramWithId(id: Int): Program/*HttpResponse*/ {
         /*val response = withContext(Dispatchers.IO) {
             client.get("$PROGRAM_ROOT/${id.toString()}") {
                 basicAuth(username = username, password = password)
@@ -34,7 +35,7 @@ class ProgramRepository private constructor(val username: String, val password: 
                 client.get("$PROGRAM_ROOT/${id.toString()}") {
                     basicAuth(username = username, password = password)
                     expectSuccess = true
-                }
+                }.body<Program>()
             } catch(exception: Exception) {
                 Log.d("exception", "$exception of getting program with id")
                 throw exception
@@ -42,13 +43,13 @@ class ProgramRepository private constructor(val username: String, val password: 
         }
     }
 
-    override suspend fun getProgramListWithUser(id: Int): HttpResponse {
+    override suspend fun getProgramListWithUser(id: Int): List<Program>/*HttpResponse*/ {
         return withContext(Dispatchers.IO) {
             try {
                 client.get("$PROGRAM_ROOT/$USER_ROOT/${id.toString()}") {
                     basicAuth(username = username, password = password)
                     expectSuccess = true
-                }
+                }.body<List<Program>>()
             } catch(exception: Exception) {
                 Log.d("exception", "$exception of getting program list with user id")
                 throw exception
@@ -56,13 +57,13 @@ class ProgramRepository private constructor(val username: String, val password: 
         }
     }
 
-    override suspend fun getUserListWithProgram(id: Int): HttpResponse {
+    override suspend fun getUserListWithProgram(id: Int): List<User>/*HttpResponse*/ {
         return withContext(Dispatchers.IO) {
             try {
                 client.get("$PROGRAM_ROOT/$USERS_ROOT/$id") {
                     basicAuth(username = username, password = password)
                     expectSuccess = true
-                }
+                }.body<List<User>>()
             } catch (exception: Exception) {
                 Log.d("exception", "$exception of getting user list with program")
                 throw exception

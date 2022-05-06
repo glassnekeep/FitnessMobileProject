@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelStore
 import androidx.navigation.fragment.navArgs
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentProgramBinding
 import application.workout.fitnessmobileproject.databinding.FragmentProgramsBinding
+import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
 
 class ProgramFragment : Fragment() {
 
@@ -17,7 +20,9 @@ class ProgramFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    val args: ProgramFragmentArgs by navArgs()
+    private val arguments: ProgramFragmentArgs by navArgs()
+
+    private val viewModel: ProgramViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,6 @@ class ProgramFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.programName.text = args.programId.toString()
+        binding.programName.text = arguments.programId.toString()
     }
 }
