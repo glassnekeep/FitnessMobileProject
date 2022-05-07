@@ -6,13 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelStore
+import androidx.navigation.NavGraph
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentProgramBinding
 import application.workout.fitnessmobileproject.databinding.FragmentProgramsBinding
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
+import kotlinx.android.synthetic.main.fragment_program.*
+import kotlinx.android.synthetic.main.register_toolbar.*
 
 class ProgramFragment : Fragment() {
 
@@ -26,7 +36,8 @@ class ProgramFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        //(requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        //(requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateView(
@@ -40,6 +51,22 @@ class ProgramFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.programName.text = arguments.programId.toString()
+        //binding.programName.text = arguments.programId.toString()
+        //(requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar.registerToolbar)
+        //(requireActivity() as AppCompatActivity).setSupportActionBar(register_toolbar)
+        //(requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+        val activity = (requireActivity() as AppCompatActivity)
+        //activity.supportActionBar?.show()
+        //activity.setSupportActionBar(toolbar)
+        binding.collapsingLayout.setupWithNavController(binding.toolbar, findNavController(), AppBarConfiguration(findNavController().graph))
+        (activity as AppCompatActivity).supportActionBar?.let {
+            it.setHomeButtonEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.title = "Program"
+        }
+        activity.supportActionBar.let { bar ->
+            bar?.setHomeButtonEnabled(true)
+            bar?.setDisplayHomeAsUpEnabled(true)
+        }
     }
 }
