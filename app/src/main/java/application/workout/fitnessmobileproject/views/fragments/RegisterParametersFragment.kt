@@ -1,6 +1,7 @@
 package application.workout.fitnessmobileproject.views.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -67,6 +68,10 @@ class RegisterParametersFragment : Fragment() {
             }
             if (binding.heightEditText.editText?.text.isNullOrEmpty()) {
                 binding.heightEditText.error = "Enter height!"
+                return@setOnClickListener
+            }
+            if (!android.util.Patterns.PHONE.matcher(binding.phoneNumberEditText.editText?.text.toString()).matches()) {
+                binding.phoneNumberEditText.error = "Enter correct phone number!"
                 return@setOnClickListener
             }
             viewModel.setAdditionalInfo(

@@ -37,7 +37,19 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.username.observe(this) { username ->
+        viewModel.let {
+            it.email.observe(this) { email ->
+                binding.emailEditText.editText?.setText(email)
+            }
+            it.password.observe(this) { password ->
+                binding.passwordEditText.editText?.setText(password)
+                binding.passwordConfirmEditText.editText?.setText(password)
+            }
+            it.username.observe(this) { username ->
+                binding.loginEditText.editText?.setText(username)
+            }
+        }
+        /*viewModel.username.observe(this) { username ->
             binding.loginEditText.editText?.setText(username)
         }
         viewModel.password.observe(this) { password ->
@@ -46,7 +58,7 @@ class RegisterFragment : Fragment() {
         }
         viewModel.email.observe(this) { email ->
             binding.emailEditText.editText?.setText(email)
-        }
+        }*/
         binding.nextButton.setOnClickListener {
             /*if (binding.loginEditText.editText?.text.isNullOrEmpty() &&
                     !binding.passwordEditText.editText?.text.isNullOrEmpty() &&

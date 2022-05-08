@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:fontFamily="@font/comfortaa"
-        android:textSize="45sp"
+        android:textSize="@dimen/large_text"
         android:textColor="#BD1E4C"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,6 +59,7 @@
         android:id="@+id/profile_mini"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -101,6 +102,7 @@
         android:id="@+id/password"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -139,9 +141,52 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/share_progress"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintLeft_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/medium_margin"
+        android:weightSum="10"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_share_24"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Share progress"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/medium_text"
+            android:paddingLeft="@dimen/very_small_margin"
+            android:layout_weight="10"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0"
+            android:paddingEnd="10dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/settings"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintTop_toBottomOf="@id/share_progress"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -155,6 +200,7 @@
         android:id="@+id/security"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -196,8 +242,10 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/phone_number"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
