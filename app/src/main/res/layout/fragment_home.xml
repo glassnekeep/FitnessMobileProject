@@ -16,6 +16,7 @@
         android:background="@drawable/union" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,22 +25,23 @@
         android:fontFamily="@font/comfortaa"
         android:layout_margin="@dimen/large_margin"
         android:text="Home"
-        android:textSize="@dimen/medium_text" />
+        android:textSize="@dimen/large_text" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/flipper_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/top_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="@dimen/medium_margin"
-        android:layout_marginHorizontal="@dimen/large_margin"
-        android:layout_marginTop="96dp" >
+
         <ViewFlipper
             android:id="@+id/image_flipper"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="@dimen/medium_margin"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:inAnimation="@anim/flipin"
+            android:outAnimation="@anim/flipout"
+            android:autoStart="true"
+            android:flipInterval="10000" >
 
             <com.google.android.material.imageview.ShapeableImageView
                 style="@style/flipper_images"
@@ -51,7 +53,7 @@
                 style="@style/flipper_images"
                 android:src="@drawable/image5"/>
         </ViewFlipper>
-    </com.google.android.material.card.MaterialCardView>
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/previous_program_container"
@@ -62,7 +64,7 @@
         app:cardCornerRadius="@dimen/small_margin"
         android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="@dimen/big_margin"
-        app:layout_constraintTop_toBottomOf="@id/flipper_container"
+        app:layout_constraintTop_toBottomOf="@id/image_flipper"
         app:cardElevation="0.5dp"
         app:cardPreventCornerOverlap="true"
         app:cardBackgroundColor="#F8F6F6"

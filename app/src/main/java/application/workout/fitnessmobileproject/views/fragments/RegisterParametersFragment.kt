@@ -7,9 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentRegisterBinding
 import application.workout.fitnessmobileproject.databinding.FragmentRegisterParametersBinding
@@ -39,6 +43,7 @@ class RegisterParametersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.root.setupWithNavController(findNavController(), AppBarConfiguration(findNavController().graph))
         binding.registerButton.setOnClickListener {
             if (binding.firstNameEditText.editText?.text.isNullOrEmpty()) {
                 binding.firstNameEditText.error = "Enter name!"

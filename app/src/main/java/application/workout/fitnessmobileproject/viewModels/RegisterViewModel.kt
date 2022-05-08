@@ -1,5 +1,7 @@
 package application.workout.fitnessmobileproject.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.Settings
@@ -19,9 +21,9 @@ class RegisterViewModel: ViewModel() {
     val email get() = _email
     private var _name = MutableLiveData<String>()
     val name get() = _name*/
-    private var _username = ""
-    private var _password = ""
-    private var _email = ""
+    private var _username = MutableLiveData<String>()//""
+    private var _password = MutableLiveData<String>()//""
+    private var _email = MutableLiveData<String>()//""
     private var _name = ""
     private var _surname = ""
     private var _phoneNumber = ""
@@ -29,10 +31,14 @@ class RegisterViewModel: ViewModel() {
     private var _weight = 0
     private var _height = 0
 
+    val username: LiveData<String> get() = _username
+    val password: LiveData<String> get() = _password
+    val email: LiveData<String> get() = _email
+
     fun setMainInfo(username: String, password: String, email: String) {
-        _username = username
-        _password = password
-        _email = email
+        _username.value = username
+        _password.value = password
+        _email.value = email
     }
 
     fun setAdditionalInfo(name: String, surname: String, phoneNumber: String, sex: String, weight: Int, height: Int) {
@@ -45,24 +51,24 @@ class RegisterViewModel: ViewModel() {
     }
 
     fun registerUser() {
-        if (_username.isNotEmpty() && _password.isNotEmpty() && _email.isNotEmpty() &&
+        if (_username.value != null && _password.value != null && _email.value != null &&
             _name.isNotEmpty() && _surname.isNotEmpty() && _phoneNumber.isNotEmpty() &&
             _sex.isNotEmpty() && _weight != 0 && _height != 0) {
             val user = User(
                 id = 0,
-                username = _username,
+                username = _username.value!!,
                 firstname = _name,
                 lastname = _surname,
                 phoneNumber = _phoneNumber,
-                email= _email,
-                password = _password,
+                email= _email.value!!,
+                password = _password.value!!,
                 sex = _sex,
                 growth = _height,
                 weight = _weight
             )
             viewModelScope.launch(Dispatchers.Main) {
                 try {
-                    UserRepository.getInstance(username = _username, password = _password).createUser(user)
+                    UserRepository.getInstance(username = _username.value!!, password = _password.value!!).createUser(user)
                     /*SettingsRepository.getInstance(username = _username, password = _password).createSettings(
                         Settings(id = 0, user = user, restTime = 15, countDownTime = 20)
                     )*/

@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.fragments.StatisticsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="48sp"
-        android:text="StatisticsFragment" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statistics"
+        android:textSize="36sp"
+        android:textColor="#C81956"
+        android:fontFamily="@font/comfortaa"
+        android:layout_margin="8dp"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:background="#E3E3E3"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:text="Your progress"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="24sp"
+            android:layout_marginStart="8dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:src="@drawable/chart"
+            android:layout_margin="8dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calendar"
+            android:textSize="24sp"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+        <CalendarView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:minDate="5/08/2022"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
