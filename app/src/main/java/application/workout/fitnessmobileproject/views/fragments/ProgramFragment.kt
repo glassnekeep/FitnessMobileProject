@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelStore
@@ -17,10 +18,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentProgramBinding
 import application.workout.fitnessmobileproject.databinding.FragmentProgramsBinding
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
+import application.workout.fitnessmobileproject.views.adapters.ExerciseAdapter
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_program.*
 import kotlinx.android.synthetic.main.register_toolbar.*
 
@@ -36,6 +40,7 @@ class ProgramFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.initProgram(arguments.programId)
         //(requireActivity() as AppCompatActivity).supportActionBar?.hide()
         //(requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -67,6 +72,18 @@ class ProgramFragment : Fragment() {
         activity.supportActionBar.let { bar ->
             bar?.setHomeButtonEnabled(true)
             bar?.setDisplayHomeAsUpEnabled(true)
+        }
+        binding.exerciseRecycler.layoutManager = LinearLayoutManager(this.context)
+        viewModel.program.observe(this) { program ->
+            binding.exerciseRecycler.adapter = ExerciseAdapter(context ?: getActivity()!!.applicationContext, program.exercise)
+            activity.supportActionBar?.title = program.name
+            Glide
+                .with(binding.root.context)
+                .load(program.image)
+                .placeholder(R.drawable.place_holder)
+                .override(672, 280)
+                .centerCrop()
+                .into(binding.programImage)
         }
     }
 }

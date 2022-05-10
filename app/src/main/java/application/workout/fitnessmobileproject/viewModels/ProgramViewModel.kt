@@ -10,17 +10,17 @@ import application.workout.fitnessmobileproject.model.repository.repositories.Pr
 import application.workout.fitnessmobileproject.utils.USER
 import kotlinx.coroutines.launch
 
-class ProgramViewModel(id: Int): ViewModel() {
+class ProgramViewModel(): ViewModel() {
 
     private val _program = MutableLiveData<Program>()
 
     val program: LiveData<Program> get() = _program
 
-    init {
+    /*init {
         initProgram(id)
-    }
+    }*/
 
-    private fun initProgram(id: Int) {
+    fun initProgram(id: Int) {
         viewModelScope.launch {
             try {
                 _program.value = ProgramRepository.getInstance(

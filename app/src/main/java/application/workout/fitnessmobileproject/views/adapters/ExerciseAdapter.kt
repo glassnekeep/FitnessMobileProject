@@ -27,6 +27,7 @@ class ExerciseAdapter(
                     .with(binding.root.context)
                     .load(this.image)
                     .placeholder(R.drawable.place_holder)
+                    .override(180, 180)
                     .centerCrop()
                     .into(binding.exerciseImage)
             }
