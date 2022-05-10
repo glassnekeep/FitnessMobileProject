@@ -16,6 +16,8 @@ class ProgramViewModel(): ViewModel() {
 
     val program: LiveData<Program> get() = _program
 
+    var current = 0
+
     /*init {
         initProgram(id)
     }*/

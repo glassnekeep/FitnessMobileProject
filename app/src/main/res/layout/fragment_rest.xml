@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.RestFragment">
+
+    <include
+    android:id="@+id/toolbar"
+    layout="@layout/register_toolbar"
+    android:layout_alignParentTop="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rest_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rest time"
+        android:textSize="@dimen/large_text"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="@dimen/very_large_margin" />
+
+    <ProgressBar
+        android:id="@+id/custom_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rest_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        android:layout_marginVertical="@dimen/very_very_large_margin"
+        android:progressDrawable="@drawable/custom_progress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/current_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/custom_progress"
+        app:layout_constraintBottom_toBottomOf="@id/custom_progress"
+        app:layout_constraintEnd_toEndOf="@id/custom_progress"
+        app:layout_constraintStart_toStartOf="@id/custom_progress"
+        android:text="10%"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

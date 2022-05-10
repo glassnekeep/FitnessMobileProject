@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelStore
 import androidx.navigation.NavGraph
@@ -36,7 +37,7 @@ class ProgramFragment : Fragment() {
 
     private val arguments: ProgramFragmentArgs by navArgs()
 
-    private val viewModel: ProgramViewModel by viewModels()
+    private val viewModel: ProgramViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
