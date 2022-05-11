@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.widget.Toast
 import application.workout.fitnessmobileproject.model.models.*
+import application.workout.fitnessmobileproject.model.repository.repositories.SettingsRepository
 import application.workout.fitnessmobileproject.model.repository.repositories.UserRepository
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -42,12 +43,24 @@ class FitnessApplication: Application() {
         val username = getUsername() ?: ""
         val password = getPassword() ?: ""
         USER = try {
-            UserRepository.getInstance(/*this,*/ username, password).getUserWithUsername(username).body()
+            withContext(Dispatchers.IO) {
+                UserRepository.getInstance(/*this,*/ username, password).getUserWithUsername(username).body()
+            }
         } catch (e: Exception) {
             Log.d("username", getUsername() ?: "")
             Log.d("password", getPassword() ?: "")
             withContext(Dispatchers.Main) {
                 Toast.makeText(applicationContext, "Error = $e", Toast.LENGTH_SHORT).show()
+            }
+            null
+        }
+        SETTINGS = try {
+            withContext(Dispatchers.IO) {
+                SettingsRepository.getInstance(username, password).getSettingsWithUserId(USER?.id ?: 0)
+            }
+        } catch (exception: Exception) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(applicationContext, "Errpr = ${exception.message}", Toast.LENGTH_SHORT).show()
             }
             null
         }

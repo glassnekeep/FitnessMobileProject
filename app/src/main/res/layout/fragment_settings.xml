@@ -11,24 +11,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
-        android:textSize="45sp"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="@dimen/large_text"
         android:textColor="#BD1E4C"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingLeft="20dp"
-        android:paddingTop="40dp"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/firstname_lastname_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingTop="40dp"
+        android:fontFamily="@font/comfortaa"
         android:text="Name Surname"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintLeft_toRightOf="@id/program"
+        android:layout_margin="@dimen/medium_margin"
+        app:layout_constraintStart_toEndOf="@id/profile"
         app:layout_constraintTop_toBottomOf="@id/program"
         />
 
@@ -38,35 +39,33 @@
         android:layout_width="150dp"
         android:src="@drawable/profile"
         app:layout_constraintTop_toBottomOf="@id/program"
-        app:layout_constraintLeft_toLeftOf="@id/profile"
-        android:paddingLeft="10dp"
-        android:layout_marginBottom="100dp"
-        android:paddingTop="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/small_margin"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/account"
         app:layout_constraintTop_toBottomOf="@id/profile"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@id/profile"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Account"
+        android:fontFamily="@font/comfortaa"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:paddingLeft="10dp"
-        android:paddingTop="40dp"
         />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/profile_mini"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/account"
         app:layout_constraintLeft_toRightOf="parent"
-        android:layout_marginHorizontal="@dimen/very_small_margin"
+        android:layout_marginHorizontal="@dimen/medium_margin"
         android:weightSum="10"
         >
 
@@ -103,12 +102,13 @@
         android:id="@+id/password"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/profile_mini"
         app:layout_constraintLeft_toRightOf="parent"
-        android:layout_marginHorizontal="@dimen/very_small_margin"
+        android:layout_marginHorizontal="@dimen/medium_margin"
         android:weightSum="10"
         >
 
@@ -141,28 +141,72 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/share_progress"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintLeft_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/medium_margin"
+        android:weightSum="10"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_share_24"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Share progress"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/medium_text"
+            android:paddingLeft="@dimen/very_small_margin"
+            android:layout_weight="10"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0"
+            android:paddingEnd="10dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/settings"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintTop_toBottomOf="@id/share_progress"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Settings"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
         />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/security"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/settings"
         app:layout_constraintLeft_toRightOf="parent"
-        android:layout_marginHorizontal="@dimen/very_small_margin"
+        android:layout_marginHorizontal="@dimen/medium_margin"
         android:weightSum="10"
         >
 
@@ -198,14 +242,16 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/phone_number"
         android:clickable="true"
         android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/security"
         app:layout_constraintLeft_toRightOf="parent"
-        android:layout_marginHorizontal="@dimen/very_small_margin"
+        android:layout_marginHorizontal="@dimen/medium_margin"
         android:weightSum="10"
         >
 
@@ -225,7 +271,7 @@
             android:text="Phone"
             android:textColor="#6C6C6C"
             android:textSize="25sp"
-            android:paddingLeft="16dp"
+            android:paddingLeft="@dimen/very_small_margin"
             android:layout_weight="10"
             />
 

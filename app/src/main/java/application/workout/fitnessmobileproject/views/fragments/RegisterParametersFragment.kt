@@ -1,15 +1,20 @@
 package application.workout.fitnessmobileproject.views.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentRegisterBinding
 import application.workout.fitnessmobileproject.databinding.FragmentRegisterParametersBinding
@@ -39,6 +44,7 @@ class RegisterParametersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.root.setupWithNavController(findNavController(), AppBarConfiguration(findNavController().graph))
         binding.registerButton.setOnClickListener {
             if (binding.firstNameEditText.editText?.text.isNullOrEmpty()) {
                 binding.firstNameEditText.error = "Enter name!"
@@ -62,6 +68,10 @@ class RegisterParametersFragment : Fragment() {
             }
             if (binding.heightEditText.editText?.text.isNullOrEmpty()) {
                 binding.heightEditText.error = "Enter height!"
+                return@setOnClickListener
+            }
+            if (!android.util.Patterns.PHONE.matcher(binding.phoneNumberEditText.editText?.text.toString()).matches()) {
+                binding.phoneNumberEditText.error = "Enter correct phone number!"
                 return@setOnClickListener
             }
             viewModel.setAdditionalInfo(

@@ -37,6 +37,28 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.let {
+            it.email.observe(this) { email ->
+                binding.emailEditText.editText?.setText(email)
+            }
+            it.password.observe(this) { password ->
+                binding.passwordEditText.editText?.setText(password)
+                binding.passwordConfirmEditText.editText?.setText(password)
+            }
+            it.username.observe(this) { username ->
+                binding.loginEditText.editText?.setText(username)
+            }
+        }
+        /*viewModel.username.observe(this) { username ->
+            binding.loginEditText.editText?.setText(username)
+        }
+        viewModel.password.observe(this) { password ->
+            binding.passwordEditText.editText?.setText(password)
+            binding.passwordConfirmEditText.editText?.setText(password)
+        }
+        viewModel.email.observe(this) { email ->
+            binding.emailEditText.editText?.setText(email)
+        }*/
         binding.nextButton.setOnClickListener {
             /*if (binding.loginEditText.editText?.text.isNullOrEmpty() &&
                     !binding.passwordEditText.editText?.text.isNullOrEmpty() &&
@@ -64,6 +86,10 @@ class RegisterFragment : Fragment() {
             }
             if (binding.passwordConfirmEditText.editText?.text.toString() != binding.passwordEditText.editText?.text.toString()) {
                 binding.passwordConfirmEditText.error = "Passwords don't match!"
+                return@setOnClickListener
+            }
+            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailEditText.editText?.text.toString()).matches()) {
+                binding.emailEditText.error = "Enter correct email!"
                 return@setOnClickListener
             }
             viewModel.setMainInfo(

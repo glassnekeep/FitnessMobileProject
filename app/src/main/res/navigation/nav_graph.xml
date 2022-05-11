@@ -55,5 +55,42 @@
         android:id="@+id/homeViewPagerFragment"
         android:name="application.workout.fitnessmobileproject.views.fragments.HomeViewPagerFragment"
         android:label="fragment_home_view_pager"
-        tools:layout="@layout/fragment_home_view_pager" />
+        tools:layout="@layout/fragment_home_view_pager" >
+        <action
+            android:id="@+id/action_homeViewPagerFragment_to_programFragment"
+            app:destination="@id/programFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/programFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.ProgramFragment"
+        android:label="fragment_program"
+        tools:layout="@layout/fragment_program" >
+        <argument
+            android:name="program_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_programFragment_to_attendingProgramFragment"
+            app:destination="@id/attendingProgramFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/attendingProgramFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.AttendingProgramFragment"
+        android:label="fragment_attending_program"
+        tools:layout="@layout/fragment_attending_program" >
+        <action
+            android:id="@+id/action_attendingProgramFragment_to_restFragment"
+            app:destination="@id/restFragment" />
+        <action
+            android:id="@+id/action_attendingProgramFragment_to_homeViewPagerFragment"
+            app:destination="@id/homeViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.RestFragment"
+        android:label="fragment_rest"
+        tools:layout="@layout/fragment_rest" >
+        <action
+            android:id="@+id/action_restFragment_to_attendingProgramFragment"
+            app:destination="@id/attendingProgramFragment" />
+    </fragment>
 </navigation>
