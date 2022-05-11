@@ -78,6 +78,8 @@ class ProgramFragment : Fragment() {
         viewModel.program.observe(this) { program ->
             binding.exerciseRecycler.adapter = ExerciseAdapter(context ?: getActivity()!!.applicationContext, program.exercise)
             activity.supportActionBar?.title = program.name
+            binding.toolbar.title = program.name
+            binding.collapsingLayout.title = program.name
             Glide
                 .with(binding.root.context)
                 .load(program.image)
@@ -85,6 +87,9 @@ class ProgramFragment : Fragment() {
                 .override(672, 280)
                 .centerCrop()
                 .into(binding.programImage)
+        }
+        binding.startButton.setOnClickListener {
+            findNavController().navigate(R.id.action_programFragment_to_attendingProgramFragment)
         }
     }
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentRestBinding
+import application.workout.fitnessmobileproject.utils.SETTINGS
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
 import kotlinx.coroutines.*
 import java.lang.Runnable
@@ -23,9 +24,9 @@ class RestFragment : Fragment() {
 
     val viewModel: ProgramViewModel by activityViewModels()
 
-    private var maxProgress = 100
+    private var maxProgress = 0
 
-    private var currentProgress = 0
+    private var currentProgress = 100
 
     private var progressHandler = Handler()
 
@@ -43,11 +44,16 @@ class RestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.customProgress.max = SETTINGS?.restTime ?: 100
     }
 
     override fun onResume() {
         super.onResume()
-
+        val job = settingProgress()
+        binding.nextButton.setOnClickListener {
+            job.cancel()
+            findNavController().navigate(R.id.action_restFragment_to_attendingProgramFragment)
+        }
     }
 
     /*private fun setProgress() {
@@ -64,20 +70,20 @@ class RestFragment : Fragment() {
         thread.start()
     }*/
 
-    private fun settingProgress() {
-        MainScope().launch {
-            while (currentProgress <= 100) {
+    private fun settingProgress(): Job {
+        return MainScope().launch {
+            while (currentProgress >= 0) {
                 try {
-                    currentProgress += 10
+                    currentProgress -= 10
                     delay(1000)
                     setText()
                 } catch (exception: Exception) {
                     Toast.makeText(context, exception.message.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
+            //viewModel.current++
+            if (isActive) findNavController().navigate(R.id.action_restFragment_to_attendingProgramFragment)
         }
-        viewModel.current++
-        findNavController().navigate(R.id.action_restFragment_to_attendingProgramFragment)
     }
 
     private fun setText() {

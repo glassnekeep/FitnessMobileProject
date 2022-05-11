@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import application.workout.fitnessmobileproject.model.models.Settings
 import application.workout.fitnessmobileproject.model.repository.repositories.SettingsRepository
+import application.workout.fitnessmobileproject.utils.SETTINGS
 import application.workout.fitnessmobileproject.utils.USER
 import kotlinx.coroutines.launch
 
@@ -31,10 +32,13 @@ class SettingsViewModel: ViewModel() {
     private fun getCurrentSettings(userId: Int) {
         viewModelScope.launch {
             try {
-                _settings.value = SettingsRepository.getInstance(
+                val settingsCurrent = SettingsRepository.getInstance(username = USER?.username ?: "", password = USER?.password ?: "").getSettingsWithId(userId)
+                SETTINGS = settingsCurrent
+                _settings.value = settingsCurrent
+                /*_settings.value = SettingsRepository.getInstance(
                     username = USER?.username ?: "",
                     password = USER?.password ?: ""
-                ).getSettingsWithUserId(userId)
+                ).getSettingsWithUserId(userId)*/
             } catch (error: Throwable) {
                 throw error
             }

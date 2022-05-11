@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_attendingProgramFragment_to_restFragment"
             app:destination="@id/restFragment" />
+        <action
+            android:id="@+id/action_attendingProgramFragment_to_homeViewPagerFragment"
+            app:destination="@id/homeViewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/restFragment"
