@@ -60,7 +60,8 @@
         android:textAllCaps="false"
         android:textSize="@dimen/big_text"
         app:cornerRadius="10dp"
-        android:padding="@dimen/small_margin"
+        android:paddingVertical="@dimen/very_very_small_margin"
+        android:paddingHorizontal="@dimen/small_margin"
         android:fontFamily="@font/comfortaa"
         android:layout_marginBottom="@dimen/medium_margin" />
 

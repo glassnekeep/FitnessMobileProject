@@ -76,10 +76,15 @@ class ProgramFragment : Fragment() {
         }
         binding.exerciseRecycler.layoutManager = LinearLayoutManager(this.context)
         viewModel.program.observe(this) { program ->
+            val time = program.exercise.fold(0) { sum, element ->
+                sum + if (element.time != 0) element.time else 30
+            }
             binding.exerciseRecycler.adapter = ExerciseAdapter(context ?: getActivity()!!.applicationContext, program.exercise)
             activity.supportActionBar?.title = program.name
             binding.toolbar.title = program.name
             binding.collapsingLayout.title = program.name
+            binding.timeOfProgram.text = "${(time / 60)} min."
+            binding.numberOfExercises.text = "${program.exercise.count()} exercises"
             Glide
                 .with(binding.root.context)
                 .load(program.image)

@@ -12,6 +12,7 @@ import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentAttendingProgramBinding
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.runBlocking
 
 class AttendingProgramFragment : Fragment() {
 
@@ -64,13 +65,13 @@ class AttendingProgramFragment : Fragment() {
         }
         viewModel.isLastExercise.observe(this) { isLast ->
             binding.nextExercise.setOnClickListener {
-                viewModel.increaseCurrent()
                 if (isLast) {
-                    Toast.makeText(activity, "Finished program", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Finished ${viewModel.program.value?.name}", Toast.LENGTH_SHORT).show()
                     viewModel.finishProgram()
                     findNavController().navigate(R.id.action_attendingProgramFragment_to_homeViewPagerFragment)
                 } else {
                     findNavController().navigate(R.id.action_attendingProgramFragment_to_restFragment)
+                    viewModel.increaseCurrent()
                 }
             }
             binding.nextExercise.text = if (isLast) "Finish" else "Next exercise"

@@ -45,7 +45,6 @@
         app:layout_constraintBottom_toBottomOf="@id/custom_progress"
         app:layout_constraintEnd_toEndOf="@id/custom_progress"
         app:layout_constraintStart_toStartOf="@id/custom_progress"
-        android:text="10%"
         android:textSize="@dimen/big_text"
         android:textStyle="bold"
         android:textColor="@color/black" />

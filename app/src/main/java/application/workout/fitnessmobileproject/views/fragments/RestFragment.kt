@@ -2,6 +2,7 @@ package application.workout.fitnessmobileproject.views.fragments
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,11 +25,9 @@ class RestFragment : Fragment() {
 
     val viewModel: ProgramViewModel by activityViewModels()
 
-    private var maxProgress = 0
+    //private var maxProgress = 0
 
-    private var currentProgress = 100
-
-    private var progressHandler = Handler()
+    private var currentProgress = SETTINGS?.restTime ?: 10//100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +44,7 @@ class RestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.customProgress.max = SETTINGS?.restTime ?: 100
+        setText()
     }
 
     override fun onResume() {
@@ -74,11 +74,12 @@ class RestFragment : Fragment() {
         return MainScope().launch {
             while (currentProgress >= 0) {
                 try {
-                    currentProgress -= 10
+                    currentProgress -= 1
                     delay(1000)
                     setText()
                 } catch (exception: Exception) {
-                    Toast.makeText(context, exception.message.toString(), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, exception.message.toString(), Toast.LENGTH_SHORT).show()
+                    Log.d("exception while cancelling coroutine", "message = ${exception.message}")
                 }
             }
             //viewModel.current++

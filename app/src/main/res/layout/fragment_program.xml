@@ -74,6 +74,7 @@
                 android:background="@color/blue_800" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time_of_program"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/small_text"
@@ -89,6 +90,7 @@
                 android:background="@drawable/small_circle" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/number_of_exercises"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/small_text"
