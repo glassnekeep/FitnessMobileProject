@@ -11,6 +11,7 @@
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/drawable/lock_24.xml" value="0.1" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/drawable/person.xml" value="0.1" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/drawable/place_holder.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/drawable/progress_item.xml" value="0.1537037037037037" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/drawable/small_circle.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/font/comfortaa.xml" value="0.36203703703703705" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/font/comfortaa_light.xml" value="0.36203703703703705" />
@@ -26,9 +27,10 @@
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_rest.xml" value="0.28958333333333336" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_settings.xml" value="0.228125" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_splash.xml" value="0.22" />
-        <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_statistics.xml" value="0.228125" />
+        <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_statistics.xml" value="0.1910569105691057" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/item_exercise.xml" value="0.25" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/item_program.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/progress_item.xml" value="0.33" />
         <entry key="..\:/Users/-/AndroidStudioProjects/FitnessMobileProject/app/src/main/res/layout/register_toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/glass/StudioProjects/FitnessMobileProject/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
       </map>
