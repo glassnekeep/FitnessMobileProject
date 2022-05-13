@@ -11,6 +11,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentStatisticsBinding
+import application.workout.fitnessmobileproject.utils.USER
 import application.workout.fitnessmobileproject.viewModels.StatisticsViewModel
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -43,27 +44,44 @@ class StatisticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (USER != null) {
+            val userInfo = "${USER!!.firstname} ${USER!!.lastname}"
+            Log.d("user", "${USER!!.firstname} ${USER!!.lastname}")
+            binding.progressImage.userText.text = userInfo
+        }
         val chart = binding.progressImage.progressChart
         viewModel.userProgress.observe(this) { progressList ->
-            Log.d("progress", "$progressList")
+            val score = progressList.fold(0) { sum, progress ->
+                sum + (progress.program.exercise.fold(0) { sumExercise, exercise ->
+                    sumExercise + exercise.weight
+                } * progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat()).toInt()
+            }
+            binding.progressImage.totalScore.text = score.toString()
             val entries = ArrayList(progressList.mapIndexed { index, progress ->
                 BarEntry(index.toFloat(), (progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat() * 100))
             })
-            /*Log.d("entry size", "${entries.size}")
-            Log.d("entries", "$entries")*/
             val dataset = BarDataSet(entries, "Progress %")
             dataset.let {
                 it.color = resources.getColor(R.color.white)
                 it.axisDependency = YAxis.AxisDependency.LEFT
+                it.setDrawValues(false)
             }
             val labels: ArrayList<String> = ArrayList(progressList.map { it.program.name })
             val data = BarData(dataset)
-            //data.barWidth = 0.2f
             chart.let {
                 it.legend.isEnabled = false
                 it.data = data
-                it.data.barWidth = 0.1f
-                it.xAxis.textColor = Color.WHITE
+                it.isClickable = false
+                it.data.barWidth = 0.05f
+                it.xAxis.textColor = resources.getColor(R.color.white)//Color.WHITE
+                it.xAxis.textSize = 12f
+                it.axisLeft.textColor = resources.getColor(R.color.white)
+                it.axisLeft.textSize = 12f
+                it.axisRight.textColor = resources.getColor(R.color.white)
+                it.setNoDataTextColor(R.color.white)
+                it.data.setValueTextColor(R.color.white)
+                it.data.setValueTextSize(8f)
+                it.description.isEnabled = false
                 it.setFitBars(true)
                 it.data.notifyDataChanged()
                 it.invalidate()

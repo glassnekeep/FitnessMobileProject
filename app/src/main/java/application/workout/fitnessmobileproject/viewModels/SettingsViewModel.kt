@@ -1,5 +1,6 @@
 package application.workout.fitnessmobileproject.viewModels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,9 +33,10 @@ class SettingsViewModel: ViewModel() {
     private fun getCurrentSettings(userId: Int) {
         viewModelScope.launch {
             try {
-                val settingsCurrent = SettingsRepository.getInstance(username = USER?.username ?: "", password = USER?.password ?: "").getSettingsWithId(userId)
+                val settingsCurrent = SettingsRepository.getInstance(username = USER?.username ?: "", password = USER?.password ?: "").getSettingsWithUserId(userId)
                 SETTINGS = settingsCurrent
                 _settings.value = settingsCurrent
+                Log.d("user_settings", "${settingsCurrent.toString()}")
                 /*_settings.value = SettingsRepository.getInstance(
                     username = USER?.username ?: "",
                     password = USER?.password ?: ""
