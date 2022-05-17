@@ -11,6 +11,7 @@ interface ProgressApi {
     suspend fun getProgressWithId(id: Int) : Progress//HttpResponse
     suspend fun getProgressWithUserAndProgram(userId: Int, programId: Int) : Progress//HttpResponse
     suspend fun getProgressListWithUserId(userId: Int) : List<Progress>
+    suspend fun getSharedProgressListWithUserId(userId: Int) : List<List<Progress>>
     suspend fun createProgress(progress: Progress) //: HttpResponse
     suspend fun updateProgress(id: Int, progress: Progress) //: HttpResponse
     suspend fun deleteProgress(id: Int) //: HttpResponse

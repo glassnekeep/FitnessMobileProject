@@ -17,6 +17,7 @@ class ProgressRepository private constructor(val username: String, val password:
     private val PROGRESS_ROOT = "http://10.0.2.2:8080/progress"
     private val USER_ROOT = "user"
     private val SHARE_ROOT = "share"
+    private val SHARED_ROOT = "shared"
     private val client = KtorClientInstance.getInstance(username, password)
     override suspend fun getProgressWithId(id: Int): Progress {
         return withContext(Dispatchers.IO) {
@@ -50,6 +51,18 @@ class ProgressRepository private constructor(val username: String, val password:
                 client.get("$PROGRESS_ROOT/$USER_ROOT/$userId") {
                     basicAuth(username = username, password = password)
                 }.body<List<Progress>>()
+            } catch (exception: Exception) {
+                throw exception
+            }
+        }
+    }
+
+    override suspend fun getSharedProgressListWithUserId(userId: Int): List<List<Progress>> {
+        return withContext(Dispatchers.IO) {
+            try {
+                client.get("$PROGRESS_ROOT/$SHARED_ROOT/$userId") {
+                    basicAuth(username = username, password = password)
+                }.body<List<List<Progress>>>()
             } catch (exception: Exception) {
                 throw exception
             }
