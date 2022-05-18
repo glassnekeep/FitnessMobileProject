@@ -22,9 +22,9 @@ class ShareProgressViewModel: ViewModel() {
     может стоит как-то по-другому реализовать отлов ошибок из вью модели
     возможно, стоит так же пробрасывать исключения дальше во фрагмент
      */
-    private var _errorMessage = MutableLiveData<String>()
+    private var _message = MutableLiveData<String>()
 
-    val errorMessage get() = _errorMessage
+    val message get() = _message
 
     private var username: String
 
@@ -56,13 +56,17 @@ class ShareProgressViewModel: ViewModel() {
         }
     }
 
-    fun shareProgress(userId: Int, time: Date) {
+    fun shareProgress(userId: Int, time: String) {
         viewModelScope.launch {
             try {
                 ProgressRepository.getInstance(
                     username = username,
                     password = password
-                ).shareProgress(SharedProgress(senderId = senderId, recipientId = userId, time = ))
+                ).shareProgress(SharedProgress(senderId = senderId, recipientId = userId, time = time))
+                _message.value = "Shared progress successfully"
+            } catch (exception: Exception) {
+                Log.d("exception", "error = ${exception.message }")
+                _message.value = "Sharing progress failed"
             }
         }
     }

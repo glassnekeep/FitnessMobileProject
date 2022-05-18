@@ -15,10 +15,11 @@ data class Progress(
     val currentExercise: Int
 )
 
+@Serializable
 data class SharedProgress(
     val senderId: Int,
     val recipientId: Int,
-    val time: Date
+    val time: String
 )
 
 @Entity(tableName = "progress_name", foreignKeys =

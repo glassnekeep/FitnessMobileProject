@@ -128,7 +128,7 @@ class ProgressRepository private constructor(val username: String, val password:
                 }
             }
         }.onFailure {
-            Log.d("exception", "error = ${it.message} of shareing progress")
+            Log.d("exception", "error = ${it.message} of sharing progress")
             throw it
         }.onSuccess {
             Log.d("progress", "Shared progress successfully")

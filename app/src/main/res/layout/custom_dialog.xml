@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/enter_username_message"
+        android:id="@+id/enter_user_id_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/medium_text"
-        android:text="Enter username:"
+        android:text="Enter user id:"
         android:fontFamily="@font/comfortaa_light"
         android:textColor="@color/black"
         android:gravity="center"
@@ -18,12 +18,12 @@
         android:layout_margin="@dimen/medium_margin" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enter_username_layout"
+        android:id="@+id/enter_user_id_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/medium_margin"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@id/enter_username_message"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/enter_user_id_message"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
@@ -33,7 +33,7 @@
             android:inputType="text"
             android:fontFamily="@font/comfortaa_light"
             android:textSize="@dimen/small_text"
-            android:hint="Username"
+            android:hint="User id"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,7 +41,7 @@
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/enter_username_layout"
+        app:layout_constraintTop_toBottomOf="@id/enter_user_id_layout"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Submit"
         android:textSize="@dimen/small_text"
