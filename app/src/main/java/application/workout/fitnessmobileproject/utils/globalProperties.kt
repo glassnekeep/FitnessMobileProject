@@ -5,9 +5,11 @@ import application.workout.fitnessmobileproject.model.models.Program
 import application.workout.fitnessmobileproject.model.models.Settings
 import application.workout.fitnessmobileproject.model.models.User
 
-var USER: User? = //User(1, "pizdec", "", "", "", "", "", "",23,23)
-    null
+var USER: User? = null
 var SETTINGS: Settings? = null
 var PROGRAMS: List<Program> = emptyList()
 var USERNAME: String = ""
 var PASSWORD: String = ""
+const val baseServerUrl = "http://10.0.2.2:8080/"
+const val baseResourceUrl = "static/"
+const val basicFullResourceRoot = "$baseServerUrl/$baseResourceUrl"
