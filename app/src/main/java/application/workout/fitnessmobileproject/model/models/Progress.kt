@@ -5,6 +5,7 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.Relation
 import kotlinx.serialization.Serializable
+import java.util.*
 
 @Serializable
 data class Progress(
@@ -12,6 +13,13 @@ data class Progress(
     val program: Program,
     val user: User,
     val currentExercise: Int
+)
+
+@Serializable
+data class SharedProgress(
+    val senderId: Int,
+    val recipientId: Int,
+    val time: String
 )
 
 @Entity(tableName = "progress_name", foreignKeys =

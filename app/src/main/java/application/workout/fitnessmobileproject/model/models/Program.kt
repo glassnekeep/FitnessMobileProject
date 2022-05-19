@@ -18,7 +18,8 @@ data class Program(
     val exercise: List<Exercise>,
     //@Relation(associateBy = Junction(ProgramToUserRef::class), parentColumn = "program_id", entityColumn = "userId")
     val users: List<User>,
-    val image: String
+    val image: String,
+    val numberOfExercises: Int
     //TODO подумать о том чтобы тут было максимальное число очков за данную программу
 )
 /*@Entity(primaryKeys = ["program_id", "exerciseId"])

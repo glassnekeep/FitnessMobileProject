@@ -12,10 +12,11 @@ android {
 
     defaultConfig {
         applicationId "application.workout.fitnessmobileproject"
-        minSdk 24
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,6 +48,10 @@ dependencies {
     def lifecycle_version = "2.3.1"
     def nav_version = "2.4.2"
     def versions_work="2.7.1"
+
+    //Chart library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 

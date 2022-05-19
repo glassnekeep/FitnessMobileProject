@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_homeViewPagerFragment_to_programFragment"
             app:destination="@id/programFragment" />
+        <action
+            android:id="@+id/action_homeViewPagerFragment_to_shareProgressFragment"
+            app:destination="@id/shareProgressFragment" />
     </fragment>
     <fragment
         android:id="@+id/programFragment"
@@ -93,4 +96,9 @@
             android:id="@+id/action_restFragment_to_attendingProgramFragment"
             app:destination="@id/attendingProgramFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/shareProgressFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.ShareProgressFragment"
+        android:label="fragment_share_progress"
+        tools:layout="@layout/fragment_share_progress" />
 </navigation>
