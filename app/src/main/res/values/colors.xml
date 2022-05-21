@@ -91,5 +91,6 @@
     <color name="gray">#6C6969</color>
     <color name="gray_dark">#504E4E</color>
     <color name="gray_light">#9E9B9B</color>
+    <color name="gray_very_light">#ECECEC</color>
     <color name="gray_main_color">#6E6868</color>
 </resources>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="graylight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.ProfileFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/pink_dark"
+        android:theme="@style/ToolBarStyle"
+        app:menu="@menu/standard_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small_text"
+        android:textColor="@color/pink"
+        android:text="Account"
+        android:layout_margin="@dimen/medium_margin"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ClickableContainer"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toBottomOf="@id/account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name"
+            style="@style/ProfileTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Kirill Legkodukh" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/change_name"
+            style="@style/SmallProfileTextView"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Change name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/separator1"
+        style="@style/Separator"
+        app:layout_constraintTop_toBottomOf="@id/name_layout"
+        app:layout_constraintStart_toStartOf="@id/account"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/phone_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ClickableContainer"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toBottomOf="@id/name_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/phone"
+            style="@style/ProfileTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="+7(915)-057-50-69" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/change_phone"
+            style="@style/SmallProfileTextView"
+            app:layout_constraintTop_toBottomOf="@id/phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Change phone number" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/separator2"
+        style="@style/Separator"
+        app:layout_constraintTop_toBottomOf="@id/phone_layout"
+        app:layout_constraintStart_toStartOf="@id/account"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ClickableContainer"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toBottomOf="@id/phone_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/email"
+            style="@style/ProfileTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="glassnekeep@yandex.ru" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/change_email"
+            style="@style/SmallProfileTextView"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Change email" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/big_separator"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@id/email_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/gray_very_light" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/big_separator"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/small_text"
+        android:textColor="@color/pink"
+        android:text="Information"
+        android:layout_margin="@dimen/medium_margin" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toBottomOf="@id/info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Id: 15"
+        style="@style/ProfileTextView" />
+
+    <View
+        android:id="@+id/separator3"
+        app:layout_constraintTop_toBottomOf="@id/id"
+        app:layout_constraintStart_toStartOf="@id/info"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Separator" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/separator3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="sex: male"
+        style="@style/ProfileTextView" />
+
+    <View
+        android:id="@+id/separator4"
+        app:layout_constraintTop_toBottomOf="@id/sex"
+        app:layout_constraintStart_toStartOf="@id/info"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Separator" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/separator4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="height: 180sm"
+        style="@style/ProfileTextView" />
+
+    <View
+        android:id="@+id/separator5"
+        app:layout_constraintTop_toBottomOf="@id/height"
+        app:layout_constraintStart_toStartOf="@id/info"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Separator" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/separator5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="weight: 70kg"
+        style="@style/ProfileTextView" />
+
+    <View
+        android:id="@+id/separator6"
+        app:layout_constraintTop_toBottomOf="@id/weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Separator" />
+
+    <View
+        android:id="@+id/large_separator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/separator6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/gray_very_light" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
