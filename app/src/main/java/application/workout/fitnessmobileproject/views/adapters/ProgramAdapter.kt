@@ -9,6 +9,7 @@ import androidx.viewbinding.ViewBinding
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.ItemProgramBinding
 import application.workout.fitnessmobileproject.model.models.Program
+import application.workout.fitnessmobileproject.utils.basicFullResourceRoot
 import application.workout.fitnessmobileproject.views.fragments.HomeViewPagerFragmentDirections
 import application.workout.fitnessmobileproject.views.fragments.ProgramsFragment
 import com.bumptech.glide.Glide
@@ -30,7 +31,8 @@ class ProgramAdapter(
                 binding.imageProgram.layout(0,0,0,0)
                 Glide
                     .with(binding.root.context)
-                    .load(this.image)
+                    //.load(this.image)
+                    .load("${basicFullResourceRoot}${this.image}")
                     .placeholder(R.drawable.place_holder)
                     .apply(RequestOptions().override(672, 280))
                     .centerCrop()

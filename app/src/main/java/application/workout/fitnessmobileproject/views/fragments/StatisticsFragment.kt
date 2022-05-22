@@ -56,7 +56,7 @@ class StatisticsFragment : Fragment() {
                     sumExercise + exercise.weight
                 } * progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat()).toInt()
             }
-            binding.progressImage.totalScore.text = score.toString()
+            binding.progressImage.totalScore.text = "Total score: $score"
             val entries = ArrayList(progressList.mapIndexed { index, progress ->
                 BarEntry(index.toFloat(), (progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat() * 100))
             })
