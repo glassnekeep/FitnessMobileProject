@@ -78,6 +78,7 @@ class StatisticsFragment : Fragment() {
                 it.axisLeft.textColor = resources.getColor(R.color.white)
                 it.axisLeft.textSize = 12f
                 it.axisRight.textColor = resources.getColor(R.color.white)
+                it.axisRight.textSize = 12f
                 it.setNoDataTextColor(R.color.white)
                 it.data.setValueTextColor(R.color.white)
                 it.data.setValueTextSize(8f)

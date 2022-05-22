@@ -66,6 +66,16 @@ class ProfileFragment : Fragment() {
                 else -> false
             }
         }
+        binding.let {
+            val userInfo = "${USER?.firstname} ${USER?.lastname}"
+            it.name.text = userInfo
+            it.phone.text = "${USER?.phoneNumber}"
+            it.email.text = "${USER?.email}"
+            it.id.text = "${USER?.id}"
+            it.sex.text = "${USER?.sex}"
+            it.height.text = "${USER?.growth}"
+            it.weight.text = "${USER?.weight}"
+        }
     }
 
     /*private fun showMenu(view: View, menuRes: Int) {
