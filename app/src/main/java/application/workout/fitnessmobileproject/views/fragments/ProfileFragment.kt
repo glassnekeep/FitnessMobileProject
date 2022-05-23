@@ -71,10 +71,10 @@ class ProfileFragment : Fragment() {
             it.name.text = userInfo
             it.phone.text = "${USER?.phoneNumber}"
             it.email.text = "${USER?.email}"
-            it.id.text = "${USER?.id}"
-            it.sex.text = "${USER?.sex}"
-            it.height.text = "${USER?.growth}"
-            it.weight.text = "${USER?.weight}"
+            it.id.text = "id: ${USER?.id}"
+            it.sex.text = "sex: ${USER?.sex}"
+            it.height.text = "height: ${USER?.growth}"
+            it.weight.text = "weight: ${USER?.weight}"
         }
     }
 

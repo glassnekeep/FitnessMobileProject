@@ -33,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ClickableContainer"
-        android:background="?attr/selectableItemBackground"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/account"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +67,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ClickableContainer"
-        android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/name_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
@@ -102,7 +100,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ClickableContainer"
-        android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/phone_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >

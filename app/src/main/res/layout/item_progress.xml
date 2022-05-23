@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="@dimen/small_text"
             android:textColor="@color/white"
-            android:text="Total score: 1000"
+            android:text="Total score: 0"
             android:fontFamily="@font/comfortaa"
             android:layout_marginTop="@dimen/small_margin" />
 
