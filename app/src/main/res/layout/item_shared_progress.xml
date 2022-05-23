@@ -27,14 +27,26 @@
             android:textColor="@color/white"
             android:fontFamily="@font/comfortaa"
             android:text="Legkodukh Kirill"
-            android:textSize="@dimen/small_text" />
+            android:textSize="@dimen/medium_smaller_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/small_text"
+            android:textColor="@color/white"
+            android:text="Time"
+            android:fontFamily="@font/comfortaa"
+            android:layout_marginTop="@dimen/small_margin" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/total_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_text"
+            app:layout_constraintStart_toStartOf="@id/user_text"
             android:textSize="@dimen/small_text"
             android:textColor="@color/white"
             android:text="Total score: 1000"
@@ -44,10 +56,10 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/progress_chart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="@dimen/very_very_small_margin"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_text"
+            app:layout_constraintTop_toBottomOf="@id/total_score"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="170dp" />
 

@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.ItemExerciseBinding
 import application.workout.fitnessmobileproject.model.models.Exercise
+import application.workout.fitnessmobileproject.utils.basicFullResourceRoot
 import com.bumptech.glide.Glide
 
 class ExerciseAdapter(
     val context: Context,
-    val exerciseList: List<Exercise>): RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>() {
+    private val exerciseList: List<Exercise>): RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
         val binding = ItemExerciseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +26,8 @@ class ExerciseAdapter(
                 binding.numberOfApproaches.text = this.numberOfApproaches.toString()
                 Glide
                     .with(binding.root.context)
-                    .load(this.image)
+                    //.load(this.image)
+                    .load("${basicFullResourceRoot}${this.image}")
                     .placeholder(R.drawable.place_holder)
                     .override(180, 180)
                     .centerCrop()

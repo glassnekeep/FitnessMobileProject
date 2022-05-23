@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_homeViewPagerFragment_to_shareProgressFragment"
             app:destination="@id/shareProgressFragment" />
+        <action
+            android:id="@+id/action_homeViewPagerFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/programFragment"
@@ -101,4 +104,13 @@
         android:name="application.workout.fitnessmobileproject.views.fragments.ShareProgressFragment"
         android:label="fragment_share_progress"
         tools:layout="@layout/fragment_share_progress" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="application.workout.fitnessmobileproject.views.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

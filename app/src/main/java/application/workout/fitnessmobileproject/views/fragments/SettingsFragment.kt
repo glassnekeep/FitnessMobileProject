@@ -40,6 +40,9 @@ class SettingsFragment : Fragment() {
         binding.shareProgress.setOnClickListener {
             findNavController().navigate(R.id.action_homeViewPagerFragment_to_shareProgressFragment)
         }
+        binding.profileMini.setOnClickListener {
+            findNavController().navigate(R.id.action_homeViewPagerFragment_to_profileFragment)
+        }
     }
 
 }

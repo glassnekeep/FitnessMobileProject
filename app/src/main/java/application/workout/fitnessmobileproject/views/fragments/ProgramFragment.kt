@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentProgramBinding
 import application.workout.fitnessmobileproject.databinding.FragmentProgramsBinding
+import application.workout.fitnessmobileproject.utils.basicFullResourceRoot
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
 import application.workout.fitnessmobileproject.views.adapters.ExerciseAdapter
 import com.bumptech.glide.Glide
@@ -87,7 +88,8 @@ class ProgramFragment : Fragment() {
             binding.numberOfExercises.text = "${program.exercise.count()} exercises"
             Glide
                 .with(binding.root.context)
-                .load(program.image)
+                //.load(program.image)
+                .load("${basicFullResourceRoot}${program.image}")
                 .placeholder(R.drawable.place_holder)
                 .override(672, 280)
                 .centerCrop()

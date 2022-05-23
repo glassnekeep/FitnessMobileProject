@@ -56,7 +56,7 @@ class StatisticsFragment : Fragment() {
                     sumExercise + exercise.weight
                 } * progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat()).toInt()
             }
-            binding.progressImage.totalScore.text = score.toString()
+            binding.progressImage.totalScore.text = "Total score: $score"
             val entries = ArrayList(progressList.mapIndexed { index, progress ->
                 BarEntry(index.toFloat(), (progress.currentExercise.toFloat() / progress.program.numberOfExercises.toFloat() * 100))
             })
@@ -78,6 +78,7 @@ class StatisticsFragment : Fragment() {
                 it.axisLeft.textColor = resources.getColor(R.color.white)
                 it.axisLeft.textSize = 12f
                 it.axisRight.textColor = resources.getColor(R.color.white)
+                it.axisRight.textSize = 12f
                 it.setNoDataTextColor(R.color.white)
                 it.data.setValueTextColor(R.color.white)
                 it.data.setValueTextSize(8f)
