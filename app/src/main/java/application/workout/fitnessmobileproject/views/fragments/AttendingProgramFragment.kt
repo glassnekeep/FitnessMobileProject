@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import application.workout.fitnessmobileproject.R
 import application.workout.fitnessmobileproject.databinding.FragmentAttendingProgramBinding
+import application.workout.fitnessmobileproject.utils.basicFullResourceRoot
 import application.workout.fitnessmobileproject.viewModels.ProgramViewModel
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.delay
@@ -43,35 +47,26 @@ class AttendingProgramFragment : Fragment() {
          * поэтому клик листенер дефолтный ниже объявлять не нужно, как я понмиаю
          * Данное поведение требует дополнительной проверки при тестировании
          */
+        binding.toolbar.setupWithNavController(findNavController(), AppBarConfiguration(findNavController().graph))
+        binding.toolbar.title = "Attending program"
         viewModel.currentExercise.observe(this) { exercise ->
             Glide
                 .with(binding.root.context)
-                .load(exercise.image)
+                .load("$basicFullResourceRoot${exercise.image}")
                 .placeholder(R.drawable.place_holder)
                 .override(600, 600)
                 .centerCrop()
                 .into(binding.exerciseImage)
             binding.exerciseName.text = exercise.name
-            binding.exerciseInfo.text = exercise.time.toString()
-            /*if (program.exercise.size == viewModel.current + 1) {
-                binding.nextExercise.setOnClickListener {
-                    findNavController().navigate(R.id.action_attendingProgramFragment_to_programFragment)
-                }
-                binding.nextExercise.text = "Finish"
-            } else {
-                binding.nextExercise.setOnClickListener {
-                    findNavController().navigate(R.id.action_attendingProgramFragment_to_restFragment)
-                    viewModel.current++
-                }
-                binding.nextExercise.text = "Next exercise"
-            }*/
+            val time = "X${exercise.time}"
+            binding.exerciseInfo.text = time
         }
         viewModel.isLastExercise.observe(this) { isLast ->
             binding.nextExercise.setOnClickListener {
                 if (isLast) {
                     Toast.makeText(activity, "Finished ${viewModel.program.value?.name}", Toast.LENGTH_SHORT).show()
-                    viewModel.finishProgram()
                     findNavController().navigate(R.id.action_attendingProgramFragment_to_homeViewPagerFragment)
+                    viewModel.finishProgram()
                 } else {
                     findNavController().navigate(R.id.action_attendingProgramFragment_to_restFragment)
                     viewModel.increaseCurrent()
@@ -79,9 +74,14 @@ class AttendingProgramFragment : Fragment() {
             }
             binding.nextExercise.text = if (isLast) "Finish" else "Next exercise"
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().navigate(R.id.action_attendingProgramFragment_to_homeViewPagerFragment)
+            viewModel.finishProgram()
+        }
+        callback.isEnabled = true
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_attendingProgramFragment_to_homeViewPagerFragment)
+            viewModel.finishProgram()
+        }
     }
 }
