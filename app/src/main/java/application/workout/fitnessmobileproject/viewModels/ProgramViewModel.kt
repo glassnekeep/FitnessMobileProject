@@ -1,6 +1,7 @@
 package application.workout.fitnessmobileproject.viewModels
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -79,9 +80,15 @@ class ProgramViewModel: ViewModel() {
                 username = USER?.username ?: "",
                 password = USER?.password ?: ""
             ).let {
-                val progress = it.getProgressWithUserAndProgram(userId = userId, programId = programId)
-                if (progress.currentExercise < progress.program.numberOfExercises) {
-                    it.updateProgress(progress.id, Progress(0, progress.program, progress.user, progress.currentExercise + 1))
+                try {
+                    val progress = it.getProgressWithUserAndProgram(userId = userId, programId = programId)
+                    Log.d("PROGRESS", "Error")
+                    if (progress.currentExercise < progress.program.numberOfExercises) {
+                        it.updateProgress(progress.id, Progress(0, progress.program, progress.user, progress.currentExercise + 1))
+                    }
+                } catch (exception: Exception) {
+                    it.createProgress(Progress(0, program.value!!, USER!!, 1))
+                    Log.d("PROGRESS", "Created progress")
                 }
             }
         }
